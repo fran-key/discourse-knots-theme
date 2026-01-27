@@ -124,7 +124,7 @@ export default class KnotsCategoryTabs extends Component {
     {{#if this.categories.length}}
       <nav
         class="knots-category-tabs"
-        aria-label="\u30ab\u30c6\u30b4\u30ea\u30ca\u30d3\u30b2\u30fc\u30b7\u30e7\u30f3"
+        aria-label="カテゴリナビゲーション"
         {{didInsert this.setupContainer}}
         {{willDestroy this.teardownContainer}}
       >
@@ -132,10 +132,10 @@ export default class KnotsCategoryTabs extends Component {
           <button
             class="knots-category-tabs__scroll-left"
             {{on "click" this.scrollLeft}}
-            aria-label="\u5de6\u306b\u30b9\u30af\u30ed\u30fc\u30eb"
+            aria-label="左にスクロール"
             type="button"
           >
-            \u2039
+            ‹
           </button>
         {{/if}}
 
@@ -145,7 +145,7 @@ export default class KnotsCategoryTabs extends Component {
           href="/"
           {{on "click" this.navigateToAll}}
         >
-          \u3059\u3079\u3066
+          すべて
         </a>
 
         {{#each this.categories as |category|}}
@@ -175,10 +175,10 @@ export default class KnotsCategoryTabs extends Component {
           <button
             class="knots-category-tabs__scroll-right"
             {{on "click" this.scrollRight}}
-            aria-label="\u53f3\u306b\u30b9\u30af\u30ed\u30fc\u30eb"
+            aria-label="右にスクロール"
             type="button"
           >
-            \u203a
+            ›
           </button>
         {{/if}}
       </nav>

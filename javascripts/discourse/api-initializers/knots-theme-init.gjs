@@ -57,21 +57,21 @@ class KnotsWelcomeBanner extends Component {
   get bannerTitle() {
     return (
       this.args.outletArgs?.model?.theme_settings?.knots_banner_title ??
-      "KNOTS\u3078\u3088\u3046\u3053\u305d"
+      "KNOTSへようこそ"
     );
   }
 
   get bannerSubtitle() {
     return (
       this.args.outletArgs?.model?.theme_settings?.knots_banner_subtitle ??
-      "\u6728\u6750\u30fb\u6797\u696d\u306e\u30d7\u30ed\u30d5\u30a7\u30c3\u30b7\u30e7\u30ca\u30eb\u304c\u96c6\u3046\u30b3\u30df\u30e5\u30cb\u30c6\u30a3\u3002\u77e5\u8b58\u3092\u5171\u6709\u3057\u3001\u696d\u754c\u306e\u672a\u6765\u3092\u5171\u306b\u5275\u308a\u307e\u3057\u3087\u3046\u3002"
+      "木材・林業のプロフェッショナルが集うコミュニティ。知識を共有し、業界の未来を共に創りましょう。"
     );
   }
 
   get ctaText() {
     return (
       this.args.outletArgs?.model?.theme_settings?.knots_banner_cta_text ??
-      "\u30c8\u30d4\u30c3\u30af\u3092\u4f5c\u6210\u3059\u308b"
+      "トピックを作成する"
     );
   }
 
@@ -106,10 +106,10 @@ class KnotsWelcomeBanner extends Component {
         <button
           class="knots-welcome-banner__dismiss"
           {{on "click" this.dismiss}}
-          aria-label="\u9589\u3058\u308b"
+          aria-label="閉じる"
           type="button"
         >
-          \u2715
+          ✕
         </button>
         <div class="knots-welcome-banner__content">
           <h2 class="knots-welcome-banner__title">{{this.bannerTitle}}</h2>
@@ -186,14 +186,14 @@ class KnotsCategoryNav extends Component {
 
   <template>
     {{#if this.categories.length}}
-      <nav class="knots-category-tabs" aria-label="\u30ab\u30c6\u30b4\u30ea\u30ca\u30d3\u30b2\u30fc\u30b7\u30e7\u30f3">
+      <nav class="knots-category-tabs" aria-label="カテゴリナビゲーション">
         <button
           class="knots-category-tabs__scroll-left"
           {{on "click" this.scrollLeft}}
-          aria-label="\u5de6\u306b\u30b9\u30af\u30ed\u30fc\u30eb"
+          aria-label="左にスクロール"
           type="button"
         >
-          \u2039
+          ‹
         </button>
 
         <a
@@ -201,7 +201,7 @@ class KnotsCategoryNav extends Component {
             {{unless this.currentCategorySlug 'knots-category-tabs__tab--active'}}"
           href="/"
         >
-          \u3059\u3079\u3066
+          すべて
         </a>
 
         {{#each this.categories as |category|}}
@@ -222,10 +222,10 @@ class KnotsCategoryNav extends Component {
         <button
           class="knots-category-tabs__scroll-right"
           {{on "click" this.scrollRight}}
-          aria-label="\u53f3\u306b\u30b9\u30af\u30ed\u30fc\u30eb"
+          aria-label="右にスクロール"
           type="button"
         >
-          \u203a
+          ›
         </button>
       </nav>
     {{/if}}
@@ -262,9 +262,9 @@ class PersonaAiBadge extends Component {
   <template>
     {{#if this.isEnabled}}
       {{#if this.isAiPost}}
-        <span class="knots-persona-badge" title="AI\u30da\u30eb\u30bd\u30ca\u306b\u3088\u308b\u56de\u7b54">
+        <span class="knots-persona-badge" title="AIペルソナによる回答">
           <span class="knots-persona-badge__icon">
-            \u2728
+            ✨
           </span>
           <span class="knots-persona-badge__label">
             AI

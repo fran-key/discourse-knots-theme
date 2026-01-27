@@ -1,0 +1,81 @@
+knots_show_welcome_banner:
+  type: bool
+  default: true
+  description:
+    en: "Show welcome banner on the homepage"
+    ja: "ホームページにウェルカムバナーを表示する"
+
+knots_banner_title:
+  type: string
+  default: "KNOTSへようこそ"
+  description:
+    en: "Welcome banner title text"
+    ja: "ウェルカムバナーのタイトルテキスト"
+
+knots_banner_subtitle:
+  type: string
+  default: "木材・林業のプロフェッショナルが集うコミュニティ。知識を共有し、業界の未来を共に創りましょう。"
+  description:
+    en: "Welcome banner subtitle text"
+    ja: "ウェルカムバナーのサブタイトルテキスト"
+
+knots_banner_cta_text:
+  type: string
+  default: "トピックを作成する"
+  description:
+    en: "Call-to-action button text on the banner"
+    ja: "バナーのCTAボタンテキスト"
+
+knots_banner_cta_url:
+  type: string
+  default: "/new-topic"
+  description:
+    en: "URL for the banner CTA button"
+    ja: "バナーCTAボタンのリンク先URL"
+
+knots_category_nav_style:
+  type: enum
+  default: "horizontal_tabs"
+  choices:
+    - horizontal_tabs
+    - dropdown
+    - sidebar
+  description:
+    en: "Category navigation display style"
+    ja: "カテゴリナビゲーションの表示スタイル"
+
+knots_enable_persona_badge:
+  type: bool
+  default: true
+  description:
+    en: "Enable AI persona badge on posts"
+    ja: "投稿にAIペルソナバッジを表示する"
+
+knots_show_category_icons:
+  type: bool
+  default: true
+  description:
+    en: "Show icons next to category names"
+    ja: "カテゴリ名の横にアイコンを表示する"
+
+knots_topic_list_style:
+  type: enum
+  default: "clean_table"
+  choices:
+    - clean_table
+    - cards
+    - compact
+  description:
+    en: "Topic list display style"
+    ja: "トピック一覧の表示スタイル"
+
+knots_font_size_base:
+  type: enum
+  default: "15px"
+  choices:
+    - "14px"
+    - "15px"
+    - "16px"
+  description:
+    en: "Base font size for body text"
+    ja: "本文の基本フォントサイズ"

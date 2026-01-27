@@ -1,0 +1,250 @@
+// =============================================================================
+// KNOTS Theme - Sidebar
+// =============================================================================
+// Clean sidebar with rounded hover backgrounds and accent color highlights.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Sidebar Container
+// ---------------------------------------------------------------------------
+.sidebar-container {
+  .sidebar-sections {
+    padding: $knots-space-sm;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar Section
+// ---------------------------------------------------------------------------
+.sidebar-section {
+  margin-bottom: $knots-space-sm;
+
+  // Section header
+  .sidebar-section-header {
+    display: flex;
+    align-items: center;
+    padding: $knots-space-sm $knots-space-md;
+    margin-bottom: $knots-space-2xs;
+
+    .sidebar-section-header-text {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-xs;
+      font-weight: $knots-font-weight-bold;
+      color: var(--primary-medium);
+      text-transform: none;
+      letter-spacing: 0.02em;
+    }
+
+    .sidebar-section-header-caret {
+      .d-icon {
+        color: var(--primary-medium);
+        font-size: $knots-font-size-xs;
+        opacity: 0.5;
+        transition: opacity $knots-transition-base;
+      }
+
+      &:hover .d-icon {
+        opacity: 1;
+      }
+    }
+
+    .sidebar-section-header-button {
+      margin-left: auto;
+
+      .d-icon {
+        color: var(--primary-medium);
+        font-size: $knots-font-size-xs;
+        opacity: 0;
+        transition: opacity $knots-transition-base;
+      }
+    }
+
+    &:hover .sidebar-section-header-button .d-icon {
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Section content
+  .sidebar-section-content {
+    padding: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar Links
+// ---------------------------------------------------------------------------
+.sidebar-section-link-wrapper {
+  margin-bottom: $knots-space-2xs;
+
+  .sidebar-section-link {
+    display: flex;
+    align-items: center;
+    gap: $knots-space-sm;
+    padding: $knots-space-sm $knots-space-md;
+    border-radius: $knots-radius-md;
+    color: var(--primary);
+    text-decoration: none;
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    font-weight: $knots-font-weight-normal;
+    line-height: $knots-line-height-compact;
+    transition: background-color $knots-transition-base, color $knots-transition-base;
+
+    &:hover {
+      background-color: var(--highlight-low);
+      color: var(--primary);
+    }
+
+    // Active state
+    &.active {
+      background-color: var(--highlight-low);
+      color: var(--tertiary);
+      font-weight: $knots-font-weight-semibold;
+
+      .sidebar-section-link-prefix {
+        .d-icon {
+          color: var(--tertiary);
+          opacity: 1;
+        }
+      }
+
+      // Left accent bar
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: $knots-space-xs;
+        bottom: $knots-space-xs;
+        width: 3px;
+        background-color: var(--tertiary);
+        border-radius: 0 $knots-radius-xs $knots-radius-xs 0;
+      }
+
+      position: relative;
+    }
+
+    // Icon prefix
+    .sidebar-section-link-prefix {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+
+      .d-icon {
+        font-size: $knots-font-size-sm;
+        color: var(--primary-medium);
+        opacity: 0.6;
+        transition: color $knots-transition-base, opacity $knots-transition-base;
+      }
+
+      // Category color indicator
+      .prefix-badge {
+        width: 8px;
+        height: 8px;
+        border-radius: $knots-radius-round;
+        flex-shrink: 0;
+      }
+    }
+
+    &:hover .sidebar-section-link-prefix .d-icon {
+      opacity: 0.8;
+    }
+
+    // Link text
+    .sidebar-section-link-content-text {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // Badge count (unread, new)
+    .sidebar-section-link-suffix {
+      flex-shrink: 0;
+
+      .badge-notification {
+        font-size: $knots-font-size-xs;
+        font-weight: $knots-font-weight-semibold;
+        min-width: 18px;
+        height: 18px;
+        line-height: 18px;
+        padding: 0 $knots-space-xs;
+        border-radius: $knots-radius-pill;
+        text-align: center;
+        background-color: var(--tertiary);
+        color: #fff;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar Footer
+// ---------------------------------------------------------------------------
+.sidebar-footer-wrapper {
+  padding: $knots-space-md;
+  border-top: 1px solid var(--primary-low);
+
+  .sidebar-footer-actions {
+    display: flex;
+    align-items: center;
+    gap: $knots-space-sm;
+
+    .btn {
+      font-size: $knots-font-size-xs;
+      padding: $knots-space-xs $knots-space-sm;
+      border-radius: $knots-radius-sm;
+      color: var(--primary-medium);
+
+      .d-icon {
+        font-size: $knots-font-size-xs;
+        opacity: 0.5;
+      }
+
+      &:hover {
+        background-color: var(--highlight-low);
+        color: var(--primary);
+
+        .d-icon {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar Toggle (hamburger/panel)
+// ---------------------------------------------------------------------------
+.sidebar-toggle {
+  .btn {
+    border-radius: $knots-radius-md;
+    padding: $knots-space-sm;
+
+    &:hover {
+      background-color: var(--highlight-low);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar Panel (when opened as overlay)
+// ---------------------------------------------------------------------------
+.sidebar-hamburger-dropdown {
+  border-radius: $knots-radius-lg;
+  box-shadow: $knots-shadow-xl;
+  border: 1px solid var(--primary-low);
+  overflow: hidden;
+}
+
+// ---------------------------------------------------------------------------
+// Custom Panel Sections
+// ---------------------------------------------------------------------------
+.sidebar-custom-sections {
+  .sidebar-section-header-text {
+    font-weight: $knots-font-weight-semibold;
+  }
+}

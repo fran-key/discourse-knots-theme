@@ -1,0 +1,244 @@
+// =============================================================================
+// KNOTS Theme - Welcome Banner
+// =============================================================================
+// Dark brown gradient banner with CTA, dismiss button, and wood texture overlay.
+// Rendered by the KnotsWelcomeBanner Glimmer component.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Banner Container
+// ---------------------------------------------------------------------------
+.knots-welcome-banner {
+  position: relative;
+  background: linear-gradient(135deg, $knots-wood-dark 0%, $knots-wood-medium 50%, $knots-wood-warm 100%);
+  border-radius: $knots-radius-lg;
+  padding: $knots-space-4xl $knots-space-3xl;
+  margin-bottom: $knots-space-xl;
+  overflow: hidden;
+  z-index: $knots-z-banner;
+  box-shadow: $knots-shadow-lg;
+  max-height: $knots-banner-max-height;
+
+  // Wood grain texture overlay (pure CSS)
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 20px,
+        rgba(255, 255, 255, 0.015) 20px,
+        rgba(255, 255, 255, 0.015) 22px
+      ),
+      repeating-linear-gradient(
+        85deg,
+        transparent,
+        transparent 40px,
+        rgba(0, 0, 0, 0.03) 40px,
+        rgba(0, 0, 0, 0.03) 42px
+      ),
+      repeating-linear-gradient(
+        92deg,
+        transparent,
+        transparent 60px,
+        rgba(255, 255, 255, 0.01) 60px,
+        rgba(255, 255, 255, 0.01) 63px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Subtle radial glow
+  &::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(
+      ellipse,
+      rgba(139, 105, 20, 0.15) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Content wrapper (above overlays)
+  &__content {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+  }
+
+  // Title
+  &__title {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-3xl;
+    font-weight: $knots-font-weight-bold;
+    color: #fff;
+    line-height: $knots-line-height-heading;
+    margin: 0 0 $knots-space-md;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  // Subtitle
+  &__subtitle {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-base;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: $knots-line-height-ja;
+    margin: 0 0 $knots-space-xl;
+  }
+
+  // CTA Button
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $knots-space-sm;
+    background-color: $knots-wood-accent;
+    color: #fff;
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-base;
+    font-weight: $knots-font-weight-bold;
+    padding: $knots-space-md $knots-space-xl;
+    border-radius: $knots-radius-md;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(139, 105, 20, 0.4);
+    transition: $knots-transition-transform;
+
+    .d-icon {
+      font-size: $knots-font-size-sm;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(139, 105, 20, 0.5);
+      color: #fff;
+      filter: brightness(1.1);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(139, 105, 20, 0.3);
+    }
+  }
+
+  // Dismiss Button (top-right corner)
+  &__dismiss {
+    position: absolute;
+    top: $knots-space-base;
+    right: $knots-space-base;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: $knots-radius-round;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: $knots-transition-color;
+    font-size: $knots-font-size-sm;
+    line-height: 1;
+    padding: 0;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .d-icon {
+      font-size: $knots-font-size-xs;
+    }
+  }
+
+  // Animation on mount
+  &--entering {
+    animation: knots-banner-slide-in 0.4s ease-out;
+  }
+
+  // Dismissing animation
+  &--leaving {
+    animation: knots-banner-slide-out 0.3s ease-in forwards;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Banner Animations
+// ---------------------------------------------------------------------------
+@keyframes knots-banner-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes knots-banner-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: $knots-banner-max-height;
+    margin-bottom: $knots-space-xl;
+    padding: $knots-space-4xl $knots-space-3xl;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-16px);
+    max-height: 0;
+    margin-bottom: 0;
+    padding: 0 $knots-space-3xl;
+    overflow: hidden;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Responsive Banner
+// ---------------------------------------------------------------------------
+@media screen and (max-width: $knots-breakpoint-mobile) {
+  .knots-welcome-banner {
+    padding: $knots-space-xl $knots-space-lg;
+    border-radius: $knots-radius-md;
+    margin: $knots-space-sm;
+
+    &__title {
+      font-size: $knots-font-size-xl;
+    }
+
+    &__subtitle {
+      font-size: $knots-font-size-sm;
+      margin-bottom: $knots-space-base;
+    }
+
+    &__cta {
+      font-size: $knots-font-size-sm;
+      padding: $knots-space-sm $knots-space-base;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: $knots-breakpoint-tablet) and (min-width: $knots-breakpoint-mobile + 1) {
+  .knots-welcome-banner {
+    padding: $knots-space-2xl $knots-space-xl;
+
+    &__title {
+      font-size: $knots-font-size-2xl;
+    }
+  }
+}

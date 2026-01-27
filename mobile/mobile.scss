@@ -1,0 +1,449 @@
+// =============================================================================
+// KNOTS Theme - Mobile Overrides
+// =============================================================================
+// Mobile-specific styles applied only on mobile viewports.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Global Mobile Adjustments
+// ---------------------------------------------------------------------------
+html {
+  font-size: 14px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+}
+
+#main-outlet {
+  padding: $knots-space-sm $knots-space-md;
+}
+
+// ---------------------------------------------------------------------------
+// Header - Mobile compact
+// ---------------------------------------------------------------------------
+.d-header {
+  height: 48px;
+
+  .title {
+    a {
+      padding: $knots-space-xs;
+    }
+
+    #site-logo,
+    .logo-big {
+      max-height: 24px;
+    }
+  }
+
+  .d-header-icons {
+    .icon {
+      width: 34px;
+      height: 34px;
+    }
+
+    .header-dropdown-toggle .icon img.avatar {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  // Hide search icon text label on mobile
+  .search-dropdown .d-button-label {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Navigation - Mobile touch-friendly
+// ---------------------------------------------------------------------------
+.navigation-container {
+  margin-bottom: $knots-space-sm;
+
+  .nav-pills {
+    border-bottom-width: 1px;
+    padding: 0;
+    gap: 0;
+
+    > li {
+      > a,
+      > button {
+        padding: $knots-space-sm $knots-space-md;
+        font-size: $knots-font-size-xs;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+// Category breadcrumb horizontal scroll
+.category-breadcrumb {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: $knots-space-xs;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  li {
+    flex-shrink: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic List - Mobile simplified
+// ---------------------------------------------------------------------------
+.topic-list {
+  .topic-list-header {
+    display: none;
+  }
+
+  .topic-list-body .topic-list-item {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $knots-space-md;
+    border-bottom: 1px solid var(--primary-low);
+
+    .topic-list-data {
+      padding: 0;
+
+      &.main-link {
+        flex: 1 1 100%;
+        order: 1;
+      }
+
+      &.posters {
+        display: none;
+      }
+
+      &.num {
+        flex: 0 0 auto;
+        order: 3;
+        padding-top: $knots-space-sm;
+        font-size: $knots-font-size-xs;
+
+        &.views {
+          display: none;
+        }
+      }
+
+      &.activity {
+        flex: 0 0 auto;
+        order: 4;
+        padding-top: $knots-space-sm;
+        margin-left: auto;
+        font-size: $knots-font-size-xs;
+      }
+    }
+
+    .main-link {
+      .link-top-line {
+        a.title {
+          font-size: $knots-font-size-sm;
+          line-height: $knots-line-height-compact;
+        }
+      }
+
+      .link-bottom-line {
+        margin-top: $knots-space-xs;
+      }
+    }
+
+    &.pinned {
+      border-left: 2px solid var(--tertiary);
+      padding-left: $knots-space-md - 2px;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic Detail - Mobile
+// ---------------------------------------------------------------------------
+#topic-title {
+  padding: $knots-space-base 0 $knots-space-sm;
+
+  h1 {
+    font-size: $knots-font-size-lg;
+    line-height: $knots-line-height-heading;
+  }
+}
+
+.post-stream {
+  .topic-post {
+    margin-bottom: $knots-space-md;
+
+    .topic-body {
+      padding: $knots-space-base;
+      border-radius: $knots-radius-md;
+      box-shadow: $knots-shadow-xs;
+
+      .cooked {
+        font-size: $knots-font-size-sm;
+
+        h2 {
+          font-size: $knots-font-size-lg;
+        }
+
+        h3 {
+          font-size: $knots-font-size-base;
+        }
+
+        img:not(.avatar):not(.emoji):not(.site-icon) {
+          border-radius: $knots-radius-sm;
+        }
+
+        pre {
+          font-size: $knots-font-size-xs;
+          padding: $knots-space-sm;
+        }
+
+        blockquote {
+          padding: $knots-space-sm $knots-space-md;
+          margin: $knots-space-sm 0;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    }
+  }
+
+  .topic-map {
+    border-radius: $knots-radius-md;
+  }
+}
+
+.topic-avatar {
+  padding-right: $knots-space-sm;
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: $knots-radius-md;
+  }
+}
+
+.topic-meta-data {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $knots-space-2xs;
+  padding-bottom: $knots-space-sm;
+  margin-bottom: $knots-space-sm;
+
+  .names {
+    font-size: $knots-font-size-sm;
+  }
+
+  .post-date {
+    margin-left: 0;
+    font-size: $knots-font-size-xs;
+  }
+}
+
+// Post controls - horizontal scroll
+nav.post-controls .actions {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Buttons - Mobile full width
+// ---------------------------------------------------------------------------
+#create-topic {
+  width: 100%;
+  justify-content: center;
+  padding: $knots-space-sm $knots-space-base;
+  font-size: $knots-font-size-sm;
+  border-radius: $knots-radius-md;
+}
+
+.topic-footer-main-buttons {
+  flex-direction: column;
+  gap: $knots-space-xs;
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: $knots-font-size-xs;
+    padding: $knots-space-sm $knots-space-md;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Category Boxes - Mobile single column
+// ---------------------------------------------------------------------------
+.category-boxes,
+.category-boxes-with-topics {
+  grid-template-columns: 1fr;
+  gap: $knots-space-md;
+
+  .category-box {
+    &:hover {
+      transform: none;
+    }
+
+    .category-box-inner {
+      padding: $knots-space-base;
+    }
+
+    .category-box-heading a {
+      font-size: $knots-font-size-base;
+    }
+
+    .category-box-description {
+      font-size: $knots-font-size-xs;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// User Card - Mobile overlay
+// ---------------------------------------------------------------------------
+.user-card {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: $knots-radius-lg $knots-radius-lg 0 0;
+  box-shadow: $knots-shadow-xl;
+  max-height: 70vh;
+  overflow-y: auto;
+
+  .first-row {
+    padding: $knots-space-base;
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  .second-row {
+    padding: $knots-space-sm $knots-space-base;
+  }
+
+  .metadata {
+    padding: $knots-space-sm $knots-space-base;
+    gap: $knots-space-md;
+    flex-wrap: wrap;
+  }
+
+  .usercard-controls {
+    padding: $knots-space-sm $knots-space-base $knots-space-base;
+    flex-wrap: wrap;
+
+    .btn {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reply Control - Mobile
+// ---------------------------------------------------------------------------
+#reply-control {
+  .d-editor textarea {
+    font-size: $knots-font-size-sm;
+    min-height: 120px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Search - Mobile full screen
+// ---------------------------------------------------------------------------
+.search-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+  z-index: $knots-z-modal;
+  margin-top: 0;
+
+  .search-input input[type="text"] {
+    font-size: 16px; // Prevent iOS zoom
+  }
+}
+
+// ---------------------------------------------------------------------------
+// KNOTS Category Tabs - Mobile scroll
+// ---------------------------------------------------------------------------
+.knots-category-tabs {
+  padding: $knots-space-sm;
+  gap: $knots-space-xs;
+
+  &__tab {
+    font-size: $knots-font-size-xs;
+    padding: $knots-space-xs $knots-space-sm;
+    min-height: 32px;
+  }
+
+  // Hide scroll arrows on mobile (use touch scroll)
+  &__scroll-left,
+  &__scroll-right {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tags - Mobile smaller
+// ---------------------------------------------------------------------------
+.discourse-tag {
+  font-size: 10px;
+  padding: 1px $knots-space-xs;
+}
+
+.discourse-tags {
+  gap: $knots-space-2xs;
+}
+
+// ---------------------------------------------------------------------------
+// Banner - Mobile compact
+// ---------------------------------------------------------------------------
+.knots-welcome-banner {
+  margin: $knots-space-sm;
+  padding: $knots-space-lg $knots-space-base;
+  border-radius: $knots-radius-md;
+
+  &__title {
+    font-size: $knots-font-size-lg;
+  }
+
+  &__subtitle {
+    font-size: $knots-font-size-xs;
+    margin-bottom: $knots-space-md;
+  }
+
+  &__cta {
+    width: 100%;
+    justify-content: center;
+    font-size: $knots-font-size-sm;
+    padding: $knots-space-sm $knots-space-base;
+  }
+
+  &__dismiss {
+    width: 28px;
+    height: 28px;
+    top: $knots-space-sm;
+    right: $knots-space-sm;
+  }
+}

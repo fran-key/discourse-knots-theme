@@ -1,0 +1,298 @@
+// =============================================================================
+// KNOTS Theme - Forms
+// =============================================================================
+// Form input styling with accent color focus states and Japanese typography.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Text Inputs
+// ---------------------------------------------------------------------------
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="date"],
+input[type="datetime-local"] {
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-base;
+  padding: $knots-space-sm $knots-space-md;
+  border: 1px solid var(--primary-low);
+  border-radius: $knots-radius-md;
+  background-color: var(--secondary);
+  color: var(--primary);
+  transition: border-color $knots-transition-base, box-shadow $knots-transition-base;
+  line-height: $knots-line-height-compact;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--primary-medium);
+    opacity: 0.6;
+    font-family: $knots-font-family-ja;
+  }
+
+  &:hover {
+    border-color: var(--primary-medium);
+  }
+
+  &:focus {
+    border-color: var(--tertiary);
+    box-shadow: $knots-shadow-focus;
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--primary-low);
+  }
+
+  &.invalid,
+  &:invalid:not(:placeholder-shown) {
+    border-color: var(--danger);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Textarea
+// ---------------------------------------------------------------------------
+textarea {
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-base;
+  line-height: $knots-line-height-ja;
+  padding: $knots-space-md;
+  border: 1px solid var(--primary-low);
+  border-radius: $knots-radius-md;
+  background-color: var(--secondary);
+  color: var(--primary);
+  transition: border-color $knots-transition-base, box-shadow $knots-transition-base;
+  resize: vertical;
+  min-height: 100px;
+
+  &::placeholder {
+    color: var(--primary-medium);
+    opacity: 0.6;
+    font-family: $knots-font-family-ja;
+  }
+
+  &:hover {
+    border-color: var(--primary-medium);
+  }
+
+  &:focus {
+    border-color: var(--tertiary);
+    box-shadow: $knots-shadow-focus;
+    outline: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Select (native & custom combo-box)
+// ---------------------------------------------------------------------------
+select {
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-base;
+  padding: $knots-space-sm $knots-space-2xl $knots-space-sm $knots-space-md;
+  border: 1px solid var(--primary-low);
+  border-radius: $knots-radius-md;
+  background-color: var(--secondary);
+  color: var(--primary);
+  transition: border-color $knots-transition-base, box-shadow $knots-transition-base;
+  appearance: none;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--primary-medium);
+  }
+
+  &:focus {
+    border-color: var(--tertiary);
+    box-shadow: $knots-shadow-focus;
+    outline: none;
+  }
+}
+
+// Discourse combo-box
+.combo-box {
+  .combo-box-header {
+    font-family: $knots-font-family-ja;
+    border: 1px solid var(--primary-low);
+    border-radius: $knots-radius-md;
+    padding: $knots-space-xs $knots-space-md;
+    transition: border-color $knots-transition-base, box-shadow $knots-transition-base;
+    background-color: var(--secondary);
+
+    &:hover {
+      border-color: var(--primary-medium);
+    }
+
+    &.is-expanded {
+      border-color: var(--tertiary);
+      box-shadow: $knots-shadow-focus;
+    }
+
+    .selected-name {
+      font-size: $knots-font-size-sm;
+    }
+  }
+
+  .select-kit-body {
+    border-radius: $knots-radius-md;
+    box-shadow: $knots-shadow-lg;
+    border: 1px solid var(--primary-low);
+    overflow: hidden;
+
+    .select-kit-row {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-sm;
+      padding: $knots-space-sm $knots-space-md;
+      transition: background-color $knots-transition-base;
+
+      &:hover,
+      &.is-highlighted {
+        background-color: var(--highlight-low);
+      }
+
+      &.is-selected {
+        background-color: var(--highlight-low);
+        font-weight: $knots-font-weight-semibold;
+        color: var(--tertiary);
+      }
+    }
+
+    .filter-input {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-sm;
+      padding: $knots-space-sm $knots-space-md;
+      border-bottom: 1px solid var(--primary-low);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Checkbox & Radio
+// ---------------------------------------------------------------------------
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: $knots-wood-accent;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--tertiary);
+    outline-offset: 2px;
+  }
+}
+
+.checkbox-label,
+.radio-label {
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-sm;
+  display: inline-flex;
+  align-items: center;
+  gap: $knots-space-sm;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+// ---------------------------------------------------------------------------
+// Form Labels
+// ---------------------------------------------------------------------------
+label {
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-sm;
+  font-weight: $knots-font-weight-medium;
+  color: var(--primary);
+  margin-bottom: $knots-space-xs;
+  display: block;
+}
+
+// ---------------------------------------------------------------------------
+// Search Input
+// ---------------------------------------------------------------------------
+.search-container {
+  input[type="text"],
+  input[type="search"] {
+    padding-left: $knots-space-2xl;
+    border-radius: $knots-radius-pill;
+    background-color: var(--secondary);
+
+    &:focus {
+      border-color: var(--tertiary);
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    left: $knots-space-md;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-medium);
+    opacity: 0.5;
+  }
+}
+
+// Discourse search input in header
+.search-menu {
+  input[type="text"] {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-base;
+    border: none;
+    padding: $knots-space-md $knots-space-base;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Form Errors
+// ---------------------------------------------------------------------------
+.form-error,
+.popup-tip.bad {
+  color: var(--danger);
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-xs;
+  margin-top: $knots-space-xs;
+  padding: $knots-space-xs $knots-space-sm;
+  background-color: rgba(192, 57, 43, 0.06);
+  border-radius: $knots-radius-sm;
+  border-left: 3px solid var(--danger);
+}
+
+.popup-tip.good {
+  color: var(--success);
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-xs;
+  border-left: 3px solid var(--success);
+  background-color: rgba(39, 174, 96, 0.06);
+  border-radius: $knots-radius-sm;
+  padding: $knots-space-xs $knots-space-sm;
+}
+
+// ---------------------------------------------------------------------------
+// Fieldset
+// ---------------------------------------------------------------------------
+fieldset {
+  border: 1px solid var(--primary-low);
+  border-radius: $knots-radius-md;
+  padding: $knots-space-lg;
+  margin-bottom: $knots-space-lg;
+
+  legend {
+    font-family: $knots-font-family-ja;
+    font-weight: $knots-font-weight-semibold;
+    font-size: $knots-font-size-sm;
+    color: var(--primary);
+    padding: 0 $knots-space-sm;
+  }
+}

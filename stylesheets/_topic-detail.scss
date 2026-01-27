@@ -1,0 +1,429 @@
+// =============================================================================
+// KNOTS Theme - Topic Detail Page
+// =============================================================================
+// Post body as card with shadow, generous padding, Japanese line-height.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Topic Title Area
+// ---------------------------------------------------------------------------
+#topic-title {
+  padding: $knots-space-xl 0 $knots-space-base;
+
+  h1 {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-2xl;
+    font-weight: $knots-font-weight-bold;
+    line-height: $knots-line-height-heading;
+    color: var(--primary);
+    margin-bottom: $knots-space-sm;
+  }
+
+  .topic-category {
+    display: flex;
+    align-items: center;
+    gap: $knots-space-sm;
+    flex-wrap: wrap;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Post Stream
+// ---------------------------------------------------------------------------
+.post-stream {
+  .topic-post {
+    margin-bottom: $knots-space-lg;
+
+    .topic-body {
+      background-color: var(--secondary);
+      border: 1px solid var(--primary-low);
+      border-radius: $knots-radius-lg;
+      box-shadow: $knots-shadow-sm;
+      padding: $knots-space-xl;
+      transition: box-shadow $knots-transition-base;
+
+      &:hover {
+        box-shadow: $knots-shadow-md;
+      }
+    }
+
+    // Original post styling
+    &:first-child .topic-body {
+      box-shadow: $knots-shadow-md;
+    }
+  }
+
+  // Topic map (stats between posts)
+  .topic-map {
+    border: 1px solid var(--primary-low);
+    border-radius: $knots-radius-lg;
+    background-color: var(--secondary);
+    margin: $knots-space-base 0;
+    overflow: hidden;
+    box-shadow: $knots-shadow-xs;
+
+    section {
+      border-color: var(--primary-low);
+    }
+
+    .map {
+      .number {
+        font-weight: $knots-font-weight-bold;
+        color: var(--primary);
+      }
+
+      h4 {
+        font-family: $knots-font-family-ja;
+        font-size: $knots-font-size-xs;
+        color: var(--primary-medium);
+      }
+    }
+
+    .avatars {
+      img.avatar {
+        border-radius: $knots-radius-round;
+        border: 2px solid var(--secondary);
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Post Avatar
+// ---------------------------------------------------------------------------
+.topic-avatar {
+  padding-right: $knots-space-base;
+
+  .avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: $knots-radius-lg;
+    box-shadow: $knots-shadow-sm;
+    transition: box-shadow $knots-transition-base;
+  }
+
+  &:hover .avatar {
+    box-shadow: $knots-shadow-md;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Post Meta (username, date)
+// ---------------------------------------------------------------------------
+.topic-meta-data {
+  display: flex;
+  align-items: center;
+  gap: $knots-space-sm;
+  margin-bottom: $knots-space-md;
+  padding-bottom: $knots-space-md;
+  border-bottom: 1px solid var(--primary-low);
+
+  .names {
+    display: flex;
+    align-items: baseline;
+    gap: $knots-space-sm;
+
+    .username a {
+      font-family: $knots-font-family-ja;
+      font-weight: $knots-font-weight-semibold;
+      color: var(--primary);
+      text-decoration: none;
+      transition: color $knots-transition-base;
+
+      &:hover {
+        color: var(--tertiary);
+      }
+    }
+
+    .full-name {
+      font-size: $knots-font-size-sm;
+      color: var(--primary-medium);
+    }
+  }
+
+  .post-date {
+    font-size: $knots-font-size-xs;
+    color: var(--primary-medium);
+    margin-left: auto;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color $knots-transition-base;
+
+      &:hover {
+        color: var(--tertiary);
+      }
+    }
+  }
+
+  // User title / group badge
+  .user-title {
+    font-size: $knots-font-size-xs;
+    padding: $knots-space-2xs $knots-space-sm;
+    background-color: var(--highlight-low);
+    border-radius: $knots-radius-sm;
+    color: var(--primary-medium);
+    font-weight: $knots-font-weight-medium;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Post Body Content
+// ---------------------------------------------------------------------------
+.topic-body {
+  .cooked {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-base;
+    line-height: $knots-line-height-ja;
+    color: var(--primary);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    p {
+      margin-bottom: $knots-space-base;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: $knots-font-family-ja;
+      font-weight: $knots-font-weight-bold;
+      line-height: $knots-line-height-heading;
+      margin-top: $knots-space-2xl;
+      margin-bottom: $knots-space-md;
+      color: var(--primary);
+    }
+
+    h2 {
+      font-size: $knots-font-size-xl;
+      padding-bottom: $knots-space-sm;
+      border-bottom: 1px solid var(--primary-low);
+    }
+
+    h3 {
+      font-size: $knots-font-size-lg;
+    }
+
+    // Blockquote styling
+    blockquote {
+      border-left: 3px solid var(--tertiary);
+      margin: $knots-space-base 0;
+      padding: $knots-space-md $knots-space-lg;
+      background-color: var(--highlight-low);
+      border-radius: 0 $knots-radius-md $knots-radius-md 0;
+      color: var(--primary);
+
+      p {
+        margin-bottom: $knots-space-sm;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    // Code blocks
+    pre {
+      border-radius: $knots-radius-md;
+      border: 1px solid var(--primary-low);
+      padding: $knots-space-base;
+      overflow-x: auto;
+      font-size: $knots-font-size-sm;
+
+      code {
+        font-family: "JetBrains Mono", "Fira Code", "Source Code Pro", monospace;
+      }
+    }
+
+    code {
+      font-size: 0.9em;
+      padding: $knots-space-2xs $knots-space-xs;
+      background-color: var(--highlight-low);
+      border-radius: $knots-radius-xs;
+    }
+
+    // Images
+    img:not(.avatar):not(.emoji):not(.site-icon) {
+      border-radius: $knots-radius-md;
+      box-shadow: $knots-shadow-sm;
+      max-width: 100%;
+      height: auto;
+    }
+
+    // Links
+    a {
+      color: var(--tertiary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color $knots-transition-base;
+
+      &:hover {
+        border-bottom-color: var(--tertiary);
+      }
+    }
+
+    // Lists
+    ul, ol {
+      padding-left: $knots-space-xl;
+      margin-bottom: $knots-space-base;
+
+      li {
+        margin-bottom: $knots-space-xs;
+        line-height: $knots-line-height-ja;
+      }
+    }
+
+    // Tables
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: $knots-space-base 0;
+      border-radius: $knots-radius-md;
+      overflow: hidden;
+      border: 1px solid var(--primary-low);
+
+      th {
+        background-color: var(--highlight-low);
+        font-weight: $knots-font-weight-semibold;
+        font-size: $knots-font-size-sm;
+        padding: $knots-space-sm $knots-space-md;
+        text-align: left;
+        border-bottom: 2px solid var(--primary-low);
+      }
+
+      td {
+        padding: $knots-space-sm $knots-space-md;
+        border-bottom: 1px solid var(--primary-low);
+        font-size: $knots-font-size-sm;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:hover td {
+        background-color: var(--highlight-low);
+      }
+    }
+
+    // Horizontal rule
+    hr {
+      border: none;
+      border-top: 1px solid var(--primary-low);
+      margin: $knots-space-2xl 0;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Post Actions (like, share, reply, etc.)
+// ---------------------------------------------------------------------------
+.post-actions {
+  .post-action {
+    font-size: $knots-font-size-xs;
+    color: var(--primary-medium);
+    padding: $knots-space-xs $knots-space-sm;
+    border-radius: $knots-radius-sm;
+  }
+}
+
+nav.post-controls {
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: $knots-space-2xs;
+
+    button {
+      border-radius: $knots-radius-md;
+      padding: $knots-space-xs $knots-space-sm;
+      transition: $knots-transition-color;
+
+      .d-icon {
+        font-size: $knots-font-size-sm;
+        opacity: 0.5;
+        transition: opacity $knots-transition-base;
+      }
+
+      &:hover {
+        background-color: var(--highlight-low);
+
+        .d-icon {
+          opacity: 1;
+        }
+      }
+
+      &.has-like .d-icon,
+      &.my-likes .d-icon {
+        color: var(--love);
+        opacity: 1;
+      }
+
+      // Like count
+      .like-count {
+        font-size: $knots-font-size-xs;
+        font-weight: $knots-font-weight-medium;
+        color: var(--primary-medium);
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reply Area
+// ---------------------------------------------------------------------------
+.reply-area,
+#reply-control {
+  border-top: 2px solid var(--primary-low);
+  background-color: var(--secondary);
+  box-shadow: $knots-shadow-lg;
+
+  .reply-to {
+    padding: $knots-space-sm $knots-space-base;
+    border-bottom: 1px solid var(--primary-low);
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    color: var(--primary-medium);
+  }
+
+  .d-editor {
+    textarea {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-base;
+      line-height: $knots-line-height-ja;
+      padding: $knots-space-base;
+      border: none;
+      resize: vertical;
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    .d-editor-preview {
+      font-family: $knots-font-family-ja;
+      line-height: $knots-line-height-ja;
+      padding: $knots-space-base;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Suggested Topics
+// ---------------------------------------------------------------------------
+.suggested-topics {
+  margin-top: $knots-space-3xl;
+  padding-top: $knots-space-xl;
+  border-top: 2px solid var(--primary-low);
+
+  .suggested-topics-title {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-lg;
+    font-weight: $knots-font-weight-bold;
+    color: var(--primary);
+    margin-bottom: $knots-space-base;
+  }
+}

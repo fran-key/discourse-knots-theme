@@ -1,0 +1,182 @@
+// =============================================================================
+// KNOTS Theme - Desktop Overrides
+// =============================================================================
+// Desktop-specific styles applied only on non-mobile viewports.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Layout - Desktop content width
+// ---------------------------------------------------------------------------
+#main-outlet {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: $knots-space-2xl;
+  padding-right: $knots-space-2xl;
+}
+
+// ---------------------------------------------------------------------------
+// Header - Desktop enhancements
+// ---------------------------------------------------------------------------
+.d-header {
+  .wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .panel {
+    display: flex;
+    align-items: center;
+    gap: $knots-space-base;
+  }
+
+  // Search button with label on desktop
+  .search-dropdown {
+    .d-icon {
+      margin-right: $knots-space-xs;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar - Desktop positioning
+// ---------------------------------------------------------------------------
+.sidebar-container {
+  width: $knots-sidebar-width;
+  border-right: 1px solid var(--primary-low);
+  background-color: var(--secondary);
+  padding-top: $knots-space-base;
+
+  .sidebar-sections {
+    padding: $knots-space-sm $knots-space-md;
+  }
+}
+
+// Main content with sidebar
+.has-sidebar-page #main-outlet-wrapper {
+  display: flex;
+  gap: 0;
+
+  #main-outlet {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    padding-left: $knots-space-xl;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic List - Desktop column sizing
+// ---------------------------------------------------------------------------
+.topic-list {
+  .topic-list-header,
+  .topic-list-body .topic-list-item {
+    .topic-list-data {
+      &.main-link {
+        width: auto;
+      }
+
+      &.posters {
+        width: 120px;
+      }
+
+      &.num {
+        width: 80px;
+        text-align: center;
+      }
+
+      &.activity {
+        width: 100px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Category Boxes - Desktop grid
+// ---------------------------------------------------------------------------
+.category-boxes,
+.category-boxes-with-topics {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+// ---------------------------------------------------------------------------
+// Post Stream - Desktop spacing
+// ---------------------------------------------------------------------------
+.post-stream {
+  .topic-post {
+    .topic-body {
+      padding: $knots-space-2xl;
+    }
+
+    &:first-child .topic-body {
+      padding: $knots-space-2xl $knots-space-3xl;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic Title - Desktop sizing
+// ---------------------------------------------------------------------------
+#topic-title {
+  h1 {
+    font-size: $knots-font-size-3xl;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Create Topic Button - Desktop position
+// ---------------------------------------------------------------------------
+#create-topic {
+  position: relative;
+}
+
+// ---------------------------------------------------------------------------
+// User Card - Desktop width
+// ---------------------------------------------------------------------------
+.user-card {
+  min-width: 380px;
+  max-width: 440px;
+}
+
+// ---------------------------------------------------------------------------
+// Navigation - Desktop full width tabs
+// ---------------------------------------------------------------------------
+.knots-category-tabs {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// ---------------------------------------------------------------------------
+// Reply Control - Desktop height
+// ---------------------------------------------------------------------------
+#reply-control {
+  .d-editor {
+    min-height: 300px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Hover effects (desktop only, via pointer query)
+// ---------------------------------------------------------------------------
+@media (hover: hover) and (pointer: fine) {
+  .category-box:hover {
+    transform: translateY(-2px);
+  }
+
+  .topic-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .badge-card:hover {
+    transform: translateY(-1px);
+  }
+
+  .topic-list-body .topic-list-item:hover {
+    background-color: var(--highlight-low);
+  }
+
+  .sidebar-section-link:hover {
+    background-color: var(--highlight-low);
+  }
+}

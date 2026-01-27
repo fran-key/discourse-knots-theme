@@ -1,0 +1,279 @@
+// =============================================================================
+// KNOTS Theme - Buttons
+// =============================================================================
+// Asana-style buttons with accent colors, rounded corners, and shadow.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Base Button Reset
+// ---------------------------------------------------------------------------
+.btn {
+  font-family: $knots-font-family-ja;
+  font-weight: $knots-font-weight-medium;
+  border-radius: $knots-radius-md;
+  padding: $knots-space-sm $knots-space-base;
+  font-size: $knots-font-size-sm;
+  line-height: $knots-line-height-compact;
+  cursor: pointer;
+  transition: $knots-transition-color, $knots-transition-transform;
+  display: inline-flex;
+  align-items: center;
+  gap: $knots-space-xs;
+  border: 1px solid transparent;
+  text-decoration: none;
+
+  .d-icon {
+    font-size: $knots-font-size-sm;
+    transition: opacity $knots-transition-base;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--tertiary);
+    outline-offset: 2px;
+  }
+
+  &[disabled],
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Primary Button
+// ---------------------------------------------------------------------------
+.btn-primary {
+  background-color: var(--tertiary);
+  border-color: var(--tertiary);
+  color: #fff;
+  box-shadow: $knots-shadow-sm;
+
+  .d-icon {
+    color: #fff;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+    box-shadow: $knots-shadow-md;
+    color: #fff;
+  }
+
+  &:active {
+    filter: brightness(0.95);
+    box-shadow: $knots-shadow-xs;
+    transform: translateY(1px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Default Button
+// ---------------------------------------------------------------------------
+.btn-default {
+  background-color: var(--secondary);
+  border-color: var(--primary-low);
+  color: var(--primary);
+  box-shadow: $knots-shadow-xs;
+
+  .d-icon {
+    color: var(--primary-medium);
+  }
+
+  &:hover {
+    background-color: var(--highlight-low);
+    border-color: var(--primary-medium);
+    box-shadow: $knots-shadow-sm;
+    color: var(--primary);
+  }
+
+  &:active {
+    background-color: var(--primary-low);
+    transform: translateY(1px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Flat / Transparent Button
+// ---------------------------------------------------------------------------
+.btn-flat {
+  background: transparent;
+  border-color: transparent;
+  color: var(--primary-medium);
+  box-shadow: none;
+  padding: $knots-space-xs $knots-space-sm;
+
+  &:hover {
+    background-color: var(--highlight-low);
+    color: var(--primary);
+  }
+
+  &.btn-danger {
+    &:hover {
+      background-color: rgba(192, 57, 43, 0.08);
+      color: var(--danger);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Danger Button
+// ---------------------------------------------------------------------------
+.btn-danger {
+  background-color: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+
+  .d-icon {
+    color: #fff;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+    box-shadow: $knots-shadow-md;
+    color: #fff;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Create Topic Button (special)
+// ---------------------------------------------------------------------------
+#create-topic {
+  background-color: var(--tertiary);
+  border-color: var(--tertiary);
+  color: #fff;
+  font-weight: $knots-font-weight-bold;
+  font-size: $knots-font-size-base;
+  padding: $knots-space-md $knots-space-xl;
+  border-radius: $knots-radius-md;
+  box-shadow: $knots-shadow-md;
+  letter-spacing: 0.01em;
+
+  .d-icon {
+    color: #fff;
+    font-size: $knots-font-size-base;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+    box-shadow: $knots-shadow-lg;
+    transform: translateY(-1px);
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: $knots-shadow-sm;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Icon-only Button
+// ---------------------------------------------------------------------------
+.btn-icon {
+  padding: $knots-space-sm;
+  border-radius: $knots-radius-md;
+
+  .d-icon {
+    margin: 0;
+  }
+
+  &:hover {
+    background-color: var(--highlight-low);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Small Button
+// ---------------------------------------------------------------------------
+.btn-small {
+  font-size: $knots-font-size-xs;
+  padding: $knots-space-xs $knots-space-sm;
+  border-radius: $knots-radius-sm;
+}
+
+// ---------------------------------------------------------------------------
+// Button Groups
+// ---------------------------------------------------------------------------
+.btn-group {
+  display: inline-flex;
+  gap: 0;
+
+  .btn {
+    border-radius: 0;
+
+    &:first-child {
+      border-radius: $knots-radius-md 0 0 $knots-radius-md;
+    }
+
+    &:last-child {
+      border-radius: 0 $knots-radius-md $knots-radius-md 0;
+    }
+
+    + .btn {
+      margin-left: -1px;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic Footer Buttons
+// ---------------------------------------------------------------------------
+.topic-footer-main-buttons {
+  display: flex;
+  align-items: center;
+  gap: $knots-space-sm;
+  padding: $knots-space-base 0;
+  flex-wrap: wrap;
+
+  .btn {
+    font-size: $knots-font-size-sm;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Signup / Login Buttons
+// ---------------------------------------------------------------------------
+.sign-up-button {
+  background-color: var(--tertiary);
+  border-color: var(--tertiary);
+  color: #fff;
+  font-weight: $knots-font-weight-semibold;
+  box-shadow: $knots-shadow-sm;
+
+  &:hover {
+    filter: brightness(1.1);
+    box-shadow: $knots-shadow-md;
+    color: #fff;
+  }
+}
+
+.login-button {
+  background-color: transparent;
+  border-color: var(--header_primary);
+  color: var(--header_primary);
+  opacity: 0.9;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+    color: var(--header_primary);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Bookmark Button
+// ---------------------------------------------------------------------------
+.bookmark.bookmarked {
+  .d-icon {
+    color: var(--tertiary);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Notification Level Button
+// ---------------------------------------------------------------------------
+.notifications-button {
+  .btn {
+    border-radius: $knots-radius-md;
+  }
+}

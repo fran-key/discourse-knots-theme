@@ -1,0 +1,190 @@
+// =============================================================================
+// KNOTS Theme - Tags
+// =============================================================================
+// Accent color tags with transparency, rounded corners, and hover states.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Discourse Tag
+// ---------------------------------------------------------------------------
+.discourse-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $knots-space-2xs;
+  padding: $knots-space-2xs $knots-space-sm;
+  background-color: var(--highlight-low);
+  border: 1px solid var(--primary-low);
+  border-radius: $knots-radius-sm;
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-xs;
+  font-weight: $knots-font-weight-medium;
+  color: var(--primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: $knots-transition-color, $knots-transition-transform;
+  line-height: $knots-line-height-compact;
+
+  &:hover {
+    background-color: var(--tertiary);
+    border-color: var(--tertiary);
+    color: #fff;
+    box-shadow: $knots-shadow-xs;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--tertiary);
+    outline-offset: 2px;
+  }
+
+  // Tag with count
+  .tag-count {
+    font-size: $knots-font-size-xs;
+    color: var(--primary-medium);
+    opacity: 0.7;
+
+    &::before {
+      content: "\00d7";
+      margin-right: $knots-space-2xs;
+      font-size: 10px;
+    }
+  }
+
+  &:hover .tag-count {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  // Tag icon
+  .d-icon {
+    font-size: 10px;
+    opacity: 0.6;
+  }
+
+  &:hover .d-icon {
+    opacity: 1;
+    color: #fff;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tags in topic list
+// ---------------------------------------------------------------------------
+.discourse-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: $knots-space-xs;
+  align-items: center;
+
+  .discourse-tag {
+    font-size: $knots-font-size-xs;
+    padding: $knots-space-2xs $knots-space-sm;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tag Group
+// ---------------------------------------------------------------------------
+.tag-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $knots-space-sm;
+  padding: $knots-space-md 0;
+
+  .tag-box {
+    display: inline-flex;
+    align-items: center;
+    gap: $knots-space-xs;
+    padding: $knots-space-xs $knots-space-md;
+    background-color: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: $knots-radius-md;
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    color: var(--primary);
+    text-decoration: none;
+    transition: $knots-transition-color, $knots-transition-transform;
+    box-shadow: $knots-shadow-xs;
+
+    &:hover {
+      border-color: var(--tertiary);
+      color: var(--tertiary);
+      box-shadow: $knots-shadow-sm;
+      transform: translateY(-1px);
+    }
+
+    .tag-count {
+      background-color: var(--primary-low);
+      padding: $knots-space-2xs $knots-space-sm;
+      border-radius: $knots-radius-pill;
+      font-size: $knots-font-size-xs;
+      font-weight: $knots-font-weight-semibold;
+      color: var(--primary-medium);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tags Page
+// ---------------------------------------------------------------------------
+.tags-page {
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $knots-space-sm;
+    padding: $knots-space-base 0;
+  }
+
+  h3 {
+    font-family: $knots-font-family-ja;
+    font-weight: $knots-font-weight-bold;
+    font-size: $knots-font-size-lg;
+    color: var(--primary);
+    margin-bottom: $knots-space-md;
+    padding-bottom: $knots-space-sm;
+    border-bottom: 2px solid var(--primary-low);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Tag Drop (filter dropdown)
+// ---------------------------------------------------------------------------
+.tag-drop {
+  .tag-drop-header {
+    border-radius: $knots-radius-md;
+    padding: $knots-space-xs $knots-space-md;
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    border: 1px solid var(--primary-low);
+    transition: border-color $knots-transition-base;
+
+    &:hover {
+      border-color: var(--tertiary);
+    }
+  }
+
+  .tag-drop-body {
+    border-radius: $knots-radius-md;
+    box-shadow: $knots-shadow-lg;
+    border: 1px solid var(--primary-low);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Mini Tag List (in topic meta)
+// ---------------------------------------------------------------------------
+.mini-tag-list {
+  display: inline-flex;
+  gap: $knots-space-2xs;
+
+  .discourse-tag {
+    font-size: 10px;
+    padding: 1px $knots-space-xs;
+    background-color: transparent;
+    border: 1px solid var(--primary-low);
+
+    &:hover {
+      background-color: var(--tertiary);
+      border-color: var(--tertiary);
+      color: #fff;
+    }
+  }
+}

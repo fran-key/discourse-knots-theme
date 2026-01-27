@@ -1,0 +1,35 @@
+{
+  "name": "KNOTS Theme",
+  "about_url": "https://github.com/knot-wood/discourse-knots-theme",
+  "license_url": "https://github.com/knot-wood/discourse-knots-theme/blob/main/LICENSE",
+  "component": false,
+  "minimum_discourse_version": "3.0.0",
+  "maximum_discourse_version": null,
+  "assets": {},
+  "color_schemes": {
+    "KNOTS Wood Brown": {
+      "primary": "3D2B1F",
+      "secondary": "FFFAF5",
+      "tertiary": "8B6914",
+      "quaternary": "A0522D",
+      "header_background": "2C1810",
+      "header_primary": "FFFFFF",
+      "highlight": "FFF8DC",
+      "danger": "C0392B",
+      "success": "27AE60",
+      "love": "E74C3C"
+    },
+    "KNOTS Wood Brown Dark": {
+      "primary": "E8DDD0",
+      "secondary": "1A1410",
+      "tertiary": "C99B30",
+      "quaternary": "D4845A",
+      "header_background": "0D0A07",
+      "header_primary": "E8DDD0",
+      "highlight": "3D3020",
+      "danger": "E74C3C",
+      "success": "2ECC71",
+      "love": "E74C3C"
+    }
+  }
+}

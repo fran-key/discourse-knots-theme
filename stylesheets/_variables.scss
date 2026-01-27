@@ -1,0 +1,151 @@
+// =============================================================================
+// KNOTS Theme - Design Tokens
+// =============================================================================
+// Color values reference Discourse CSS variables for color scheme compatibility.
+// KNOTS-specific tokens handle spacing, shadows, radius, and typography.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Typography
+// ---------------------------------------------------------------------------
+$knots-font-family-ja:
+  "Hiragino Sans",
+  "Hiragino Kaku Gothic ProN",
+  "Noto Sans JP",
+  "Yu Gothic",
+  "Meiryo",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  "Helvetica Neue",
+  Arial,
+  sans-serif;
+
+$knots-font-size-base: 15px;
+$knots-font-size-sm: 13px;
+$knots-font-size-xs: 11px;
+$knots-font-size-lg: 17px;
+$knots-font-size-xl: 20px;
+$knots-font-size-2xl: 24px;
+$knots-font-size-3xl: 30px;
+
+$knots-line-height-ja: 1.85;
+$knots-line-height-heading: 1.4;
+$knots-line-height-compact: 1.5;
+
+$knots-font-weight-normal: 400;
+$knots-font-weight-medium: 500;
+$knots-font-weight-semibold: 600;
+$knots-font-weight-bold: 700;
+
+// ---------------------------------------------------------------------------
+// Spacing
+// ---------------------------------------------------------------------------
+$knots-space-2xs: 2px;
+$knots-space-xs: 4px;
+$knots-space-sm: 8px;
+$knots-space-md: 12px;
+$knots-space-base: 16px;
+$knots-space-lg: 20px;
+$knots-space-xl: 24px;
+$knots-space-2xl: 32px;
+$knots-space-3xl: 40px;
+$knots-space-4xl: 48px;
+$knots-space-5xl: 64px;
+
+// ---------------------------------------------------------------------------
+// Border Radius
+// ---------------------------------------------------------------------------
+$knots-radius-xs: 2px;
+$knots-radius-sm: 4px;
+$knots-radius-md: 8px;
+$knots-radius-lg: 12px;
+$knots-radius-xl: 16px;
+$knots-radius-round: 50%;
+$knots-radius-pill: 9999px;
+
+// ---------------------------------------------------------------------------
+// Shadows
+// ---------------------------------------------------------------------------
+$knots-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+$knots-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+$knots-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+$knots-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04);
+$knots-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+$knots-shadow-focus: 0 0 0 3px rgba(139, 105, 20, 0.25);
+
+// ---------------------------------------------------------------------------
+// Transitions
+// ---------------------------------------------------------------------------
+$knots-transition-fast: 0.15s ease;
+$knots-transition-base: 0.2s ease;
+$knots-transition-slow: 0.3s ease;
+$knots-transition-color: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+$knots-transition-transform: transform 0.2s ease, box-shadow 0.2s ease;
+
+// ---------------------------------------------------------------------------
+// Z-index
+// ---------------------------------------------------------------------------
+$knots-z-base: 1;
+$knots-z-dropdown: 100;
+$knots-z-sticky: 200;
+$knots-z-overlay: 300;
+$knots-z-modal: 400;
+$knots-z-banner: 50;
+
+// ---------------------------------------------------------------------------
+// Layout
+// ---------------------------------------------------------------------------
+$knots-header-height: 56px;
+$knots-sidebar-width: 260px;
+$knots-content-max-width: 1100px;
+$knots-banner-max-height: 240px;
+
+// ---------------------------------------------------------------------------
+// Breakpoints
+// ---------------------------------------------------------------------------
+$knots-breakpoint-mobile: 700px;
+$knots-breakpoint-tablet: 1075px;
+$knots-breakpoint-desktop: 1120px;
+
+// ---------------------------------------------------------------------------
+// KNOTS-specific accent colors (hardcoded for non-scheme elements)
+// ---------------------------------------------------------------------------
+$knots-wood-dark: #2C1810;
+$knots-wood-medium: #5C3D2E;
+$knots-wood-accent: #8B6914;
+$knots-wood-warm: #A0522D;
+$knots-wood-light: #D4A574;
+$knots-wood-cream: #FFFAF5;
+
+// ---------------------------------------------------------------------------
+// Global Base Styles
+// ---------------------------------------------------------------------------
+:root {
+  --knots-font-family: #{$knots-font-family-ja};
+  --knots-font-size-base: #{$knots-font-size-base};
+  --knots-line-height: #{$knots-line-height-ja};
+  --knots-radius-card: #{$knots-radius-lg};
+  --knots-radius-button: #{$knots-radius-md};
+  --knots-radius-tag: #{$knots-radius-sm};
+  --knots-shadow-card: #{$knots-shadow-sm};
+  --knots-shadow-card-hover: #{$knots-shadow-md};
+  --knots-transition: #{$knots-transition-base};
+}
+
+html {
+  font-size: $knots-font-size-base;
+}
+
+body {
+  font-family: $knots-font-family-ja;
+  line-height: $knots-line-height-ja;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#main-outlet {
+  padding-top: $knots-space-lg;
+}

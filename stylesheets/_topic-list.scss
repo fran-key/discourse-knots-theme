@@ -1,0 +1,361 @@
+// =============================================================================
+// KNOTS Theme - Topic List
+// =============================================================================
+// Clean table-style topic list with Asana-like feel.
+// Uses Discourse v3.x+ selectors: .topic-list-item, .topic-list-data, etc.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Topic List Container
+// ---------------------------------------------------------------------------
+.topic-list {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+// ---------------------------------------------------------------------------
+// Topic List Header
+// ---------------------------------------------------------------------------
+.topic-list-header {
+  .topic-list-data {
+    padding: $knots-space-sm $knots-space-base;
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-xs;
+    font-weight: $knots-font-weight-semibold;
+    color: var(--primary-medium);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid var(--primary-low);
+    white-space: nowrap;
+
+    .d-icon {
+      font-size: $knots-font-size-xs;
+      opacity: 0.5;
+    }
+
+    &.sortable:hover {
+      color: var(--primary);
+      cursor: pointer;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic List Body
+// ---------------------------------------------------------------------------
+.topic-list-body {
+  .topic-list-item {
+    border-bottom: 1px solid var(--primary-low);
+    background-color: var(--secondary);
+    transition: background-color $knots-transition-base;
+
+    &:hover {
+      background-color: var(--highlight-low);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    // Unread / new topics
+    &.visited {
+      .main-link .link-top-line a.title {
+        color: var(--primary-medium);
+        font-weight: $knots-font-weight-normal;
+      }
+    }
+
+    &:not(.visited) {
+      .main-link .link-top-line a.title {
+        color: var(--primary);
+        font-weight: $knots-font-weight-semibold;
+      }
+    }
+
+    // Pinned topics
+    &.pinned {
+      background-color: var(--highlight-low);
+      border-left: 3px solid var(--tertiary);
+
+      .main-link .link-top-line a.title {
+        font-weight: $knots-font-weight-bold;
+      }
+    }
+
+    // Closed / archived topics
+    &.closed,
+    &.archived {
+      opacity: 0.7;
+    }
+
+    .topic-list-data {
+      padding: $knots-space-md $knots-space-base;
+      vertical-align: middle;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic Title & Main Link
+// ---------------------------------------------------------------------------
+.topic-list-item {
+  .main-link {
+    .link-top-line {
+      display: flex;
+      align-items: center;
+      gap: $knots-space-sm;
+      margin-bottom: $knots-space-2xs;
+
+      a.title {
+        font-family: $knots-font-family-ja;
+        font-size: $knots-font-size-base;
+        font-weight: $knots-font-weight-semibold;
+        color: var(--primary);
+        text-decoration: none;
+        line-height: $knots-line-height-compact;
+        transition: color $knots-transition-base;
+
+        &:hover {
+          color: var(--tertiary);
+        }
+      }
+
+      // Topic status icons (pinned, locked, etc.)
+      .topic-statuses {
+        display: inline-flex;
+        align-items: center;
+        gap: $knots-space-2xs;
+
+        .d-icon {
+          font-size: $knots-font-size-xs;
+          color: var(--primary-medium);
+          opacity: 0.6;
+        }
+
+        // Solved icon
+        .d-icon-check-circle {
+          color: var(--success);
+          opacity: 1;
+        }
+      }
+    }
+
+    .link-bottom-line {
+      display: flex;
+      align-items: center;
+      gap: $knots-space-sm;
+      flex-wrap: wrap;
+
+      .badge-category {
+        font-size: $knots-font-size-xs;
+      }
+
+      .discourse-tags {
+        display: inline-flex;
+        gap: $knots-space-xs;
+      }
+    }
+  }
+
+  // Topic excerpt
+  .topic-excerpt {
+    color: var(--primary-medium);
+    font-size: $knots-font-size-sm;
+    line-height: $knots-line-height-ja;
+    margin-top: $knots-space-xs;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic Stats (replies, views, activity)
+// ---------------------------------------------------------------------------
+.topic-list-item {
+  .num {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    color: var(--primary-medium);
+    text-align: center;
+
+    a {
+      color: var(--primary-medium);
+      text-decoration: none;
+      transition: color $knots-transition-base;
+
+      &:hover {
+        color: var(--tertiary);
+      }
+    }
+
+    // Unread badge
+    &.unread {
+      a {
+        color: var(--tertiary);
+        font-weight: $knots-font-weight-semibold;
+      }
+    }
+  }
+
+  // Posters (avatars)
+  .posters {
+    display: flex;
+    align-items: center;
+    // Overlap handled by negative margin-right on children
+
+    a {
+      display: inline-flex;
+      margin-right: -4px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      img.avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: $knots-radius-round;
+        border: 2px solid var(--secondary);
+        transition: transform $knots-transition-base;
+      }
+
+      &:hover img.avatar {
+        transform: scale(1.15);
+        z-index: $knots-z-base;
+      }
+
+      &.latest {
+        order: -1;
+
+        img.avatar {
+          width: 26px;
+          height: 26px;
+        }
+      }
+    }
+  }
+
+  // Activity column
+  .activity {
+    font-size: $knots-font-size-xs;
+    color: var(--primary-medium);
+    white-space: nowrap;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic Cards Style (alternative layout)
+// ---------------------------------------------------------------------------
+.topic-cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $knots-space-lg;
+  padding: $knots-space-base 0;
+
+  .topic-card {
+    border: 1px solid var(--primary-low);
+    border-radius: $knots-radius-lg;
+    background-color: var(--secondary);
+    box-shadow: $knots-shadow-sm;
+    overflow: hidden;
+    transition: $knots-transition-transform, box-shadow $knots-transition-base;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $knots-shadow-md;
+    }
+
+    .topic-card__thumbnail {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--primary-low);
+    }
+
+    .topic-card__content {
+      padding: $knots-space-base;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topic-card__title {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-base;
+      font-weight: $knots-font-weight-semibold;
+      color: var(--primary);
+      margin-bottom: $knots-space-sm;
+      line-height: $knots-line-height-compact;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: color $knots-transition-base;
+
+        &:hover {
+          color: var(--tertiary);
+        }
+      }
+    }
+
+    .topic-card__excerpt-text {
+      color: var(--primary-medium);
+      font-size: $knots-font-size-sm;
+      line-height: $knots-line-height-ja;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .topic-card__metadata {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: $knots-space-md;
+      border-top: 1px solid var(--primary-low);
+      margin-top: $knots-space-md;
+      font-size: $knots-font-size-xs;
+      color: var(--primary-medium);
+
+      .topic-card__author {
+        display: flex;
+        align-items: center;
+        gap: $knots-space-xs;
+
+        img.avatar {
+          width: 20px;
+          height: 20px;
+          border-radius: $knots-radius-round;
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Empty State
+// ---------------------------------------------------------------------------
+.topic-list-blank {
+  text-align: center;
+  padding: $knots-space-5xl $knots-space-xl;
+  color: var(--primary-medium);
+  font-family: $knots-font-family-ja;
+
+  h3 {
+    font-size: $knots-font-size-xl;
+    font-weight: $knots-font-weight-semibold;
+    margin-bottom: $knots-space-md;
+  }
+
+  p {
+    font-size: $knots-font-size-base;
+    line-height: $knots-line-height-ja;
+  }
+}

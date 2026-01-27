@@ -1,0 +1,213 @@
+// =============================================================================
+// KNOTS Theme - Category Boxes
+// =============================================================================
+// Card-style category boxes with hover lift effect.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Category Boxes Layout
+// ---------------------------------------------------------------------------
+.category-boxes,
+.category-boxes-with-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $knots-space-lg;
+  padding: $knots-space-base 0;
+
+  .category-box {
+    border: 1px solid var(--primary-low);
+    border-radius: $knots-radius-lg;
+    background-color: var(--secondary);
+    box-shadow: $knots-shadow-sm;
+    overflow: hidden;
+    transition: $knots-transition-transform, box-shadow $knots-transition-base;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $knots-shadow-lg;
+    }
+
+    &:focus-within {
+      box-shadow: $knots-shadow-focus;
+    }
+
+    .category-box-inner {
+      padding: $knots-space-xl;
+      display: flex;
+      flex-direction: column;
+      gap: $knots-space-md;
+      height: 100%;
+    }
+
+    // Category color bar (top accent)
+    &[style*="border-color"] {
+      border-top-width: 3px;
+      border-top-style: solid;
+    }
+
+    .category-box-heading {
+      display: flex;
+      align-items: center;
+      gap: $knots-space-sm;
+      margin-bottom: $knots-space-xs;
+
+      a {
+        font-family: $knots-font-family-ja;
+        font-size: $knots-font-size-lg;
+        font-weight: $knots-font-weight-bold;
+        color: var(--primary);
+        text-decoration: none;
+        transition: color $knots-transition-base;
+
+        &:hover {
+          color: var(--tertiary);
+        }
+      }
+
+      .d-icon {
+        color: var(--tertiary);
+        font-size: $knots-font-size-base;
+        opacity: 0.8;
+      }
+    }
+
+    .category-box-description {
+      color: var(--primary-medium);
+      font-size: $knots-font-size-sm;
+      line-height: $knots-line-height-ja;
+      flex-grow: 1;
+
+      .cooked {
+        margin: 0;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    // Category stats (topics count, posts count)
+    .category-box-stats {
+      display: flex;
+      gap: $knots-space-base;
+      padding-top: $knots-space-md;
+      border-top: 1px solid var(--primary-low);
+      margin-top: auto;
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $knots-space-2xs;
+
+        .value {
+          font-size: $knots-font-size-lg;
+          font-weight: $knots-font-weight-bold;
+          color: var(--primary);
+        }
+
+        .label {
+          font-size: $knots-font-size-xs;
+          color: var(--primary-medium);
+          text-transform: none;
+        }
+      }
+    }
+
+    // Featured topics in category box
+    .featured-topics {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: $knots-space-xs 0;
+        border-bottom: 1px solid var(--primary-low);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        a {
+          font-size: $knots-font-size-sm;
+          color: var(--primary);
+          text-decoration: none;
+          line-height: $knots-line-height-compact;
+          transition: color $knots-transition-base;
+
+          &:hover {
+            color: var(--tertiary);
+          }
+        }
+      }
+    }
+
+    // Subcategories
+    .subcategories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $knots-space-xs;
+      padding-top: $knots-space-sm;
+
+      .subcategory {
+        .badge-category__name {
+          font-family: $knots-font-family-ja;
+          font-size: $knots-font-size-xs;
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Category Badge
+// ---------------------------------------------------------------------------
+.badge-category {
+  font-family: $knots-font-family-ja;
+  font-weight: $knots-font-weight-medium;
+
+  .badge-category__name {
+    font-size: $knots-font-size-sm;
+  }
+}
+
+.badge-category-bg {
+  border-radius: $knots-radius-xs;
+}
+
+// ---------------------------------------------------------------------------
+// Category Page Header
+// ---------------------------------------------------------------------------
+.category-heading {
+  padding: $knots-space-xl 0 $knots-space-base;
+
+  h1 {
+    font-family: $knots-font-family-ja;
+    font-weight: $knots-font-weight-bold;
+    font-size: $knots-font-size-2xl;
+  }
+
+  .category-title-description {
+    color: var(--primary-medium);
+    font-size: $knots-font-size-base;
+    line-height: $knots-line-height-ja;
+    margin-top: $knots-space-sm;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Subcategory List
+// ---------------------------------------------------------------------------
+.subcategory-list {
+  .subcategory-list-item {
+    border-radius: $knots-radius-md;
+    padding: $knots-space-md;
+    margin-bottom: $knots-space-sm;
+    border: 1px solid var(--primary-low);
+    transition: background-color $knots-transition-base;
+
+    &:hover {
+      background-color: var(--highlight-low);
+    }
+  }
+}

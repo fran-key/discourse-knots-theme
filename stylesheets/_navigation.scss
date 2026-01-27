@@ -1,0 +1,308 @@
+// =============================================================================
+// KNOTS Theme - Navigation (Horizontal Tab Style)
+// =============================================================================
+// KEY Asana-like feature: horizontal scrollable category tab navigation.
+// Uses .nav-pills with the empty <li> workaround for Discourse v3.x+.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Main Navigation Pills (horizontal tabs)
+// ---------------------------------------------------------------------------
+.nav-pills {
+  display: flex;
+  align-items: center;
+  gap: $knots-space-sm;
+  padding: $knots-space-md 0;
+  margin: 0;
+  border-bottom: 1px solid var(--primary-low);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // All list items
+  > li {
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0;
+
+    > a,
+    > button {
+      display: inline-flex;
+      align-items: center;
+      gap: $knots-space-xs;
+      padding: $knots-space-sm $knots-space-base;
+      border: 1px solid var(--primary-low);
+      border-radius: $knots-radius-pill;
+      background-color: var(--secondary);
+      color: var(--primary);
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-sm;
+      font-weight: $knots-font-weight-medium;
+      line-height: $knots-line-height-compact;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: $knots-transition-color, $knots-transition-transform;
+
+      .d-icon {
+        font-size: $knots-font-size-xs;
+        opacity: 0.6;
+      }
+
+      &:hover {
+        border-color: var(--tertiary);
+        color: var(--tertiary);
+        background-color: var(--highlight-low);
+        box-shadow: $knots-shadow-xs;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--tertiary);
+        outline-offset: 2px;
+      }
+    }
+
+    // Active state
+    &.active > a,
+    &.active > button,
+    > a.active,
+    > button.active {
+      background-color: var(--tertiary);
+      border-color: var(--tertiary);
+      color: var(--secondary);
+      font-weight: $knots-font-weight-semibold;
+      box-shadow: $knots-shadow-sm;
+
+      .d-icon {
+        opacity: 1;
+        color: var(--secondary);
+      }
+
+      &:hover {
+        background-color: var(--tertiary);
+        filter: brightness(1.1);
+        color: var(--secondary);
+      }
+    }
+  }
+
+  // Handle empty trailing <li> in Discourse nav-pills
+  > li:empty {
+    display: none;
+  }
+
+  // Use :nth-last-child(2) instead of :last-of-type due to empty <li>
+  > li:nth-last-child(2) {
+    margin-right: $knots-space-sm;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Category Breadcrumb (dropdown filters)
+// ---------------------------------------------------------------------------
+.category-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: $knots-space-sm;
+  padding: $knots-space-sm 0;
+  flex-wrap: wrap;
+
+  li {
+    list-style: none;
+    margin: 0;
+  }
+
+  .btn {
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    border-radius: $knots-radius-md;
+    padding: $knots-space-xs $knots-space-md;
+    border: 1px solid var(--primary-low);
+    background-color: var(--secondary);
+    color: var(--primary);
+    transition: $knots-transition-color;
+
+    &:hover {
+      border-color: var(--tertiary);
+      background-color: var(--highlight-low);
+    }
+  }
+
+  .category-drop,
+  .tag-drop {
+    .badge-category {
+      font-family: $knots-font-family-ja;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Discovery Navigation (top-level: Latest, New, Top, etc.)
+// ---------------------------------------------------------------------------
+.navigation-container {
+  margin-bottom: $knots-space-base;
+
+  .nav-pills {
+    border-bottom: 2px solid var(--primary-low);
+    padding-bottom: 0;
+
+    > li {
+      > a,
+      > button {
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+        padding: $knots-space-md $knots-space-base;
+        background: transparent;
+
+        &:hover {
+          border-bottom-color: var(--primary-medium);
+          background: transparent;
+          box-shadow: none;
+          color: var(--primary);
+        }
+      }
+
+      &.active > a,
+      &.active > button,
+      > a.active,
+      > button.active {
+        background: transparent;
+        color: var(--tertiary);
+        border-bottom-color: var(--tertiary);
+        box-shadow: none;
+        filter: none;
+
+        &:hover {
+          background: transparent;
+          color: var(--tertiary);
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// List Controls (period selector, tag filter, etc.)
+// ---------------------------------------------------------------------------
+.list-controls {
+  margin-bottom: $knots-space-base;
+
+  .combo-box .combo-box-header {
+    border-radius: $knots-radius-md;
+    border: 1px solid var(--primary-low);
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    padding: $knots-space-xs $knots-space-md;
+    transition: border-color $knots-transition-base;
+
+    &:hover,
+    &:focus {
+      border-color: var(--tertiary);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// KNOTS Custom Category Tabs (rendered by JS component)
+// ---------------------------------------------------------------------------
+.knots-category-tabs {
+  display: flex;
+  align-items: center;
+  gap: $knots-space-sm;
+  padding: $knots-space-md $knots-space-xl;
+  background-color: var(--secondary);
+  border-bottom: 1px solid var(--primary-low);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: $knots-space-xs;
+    padding: $knots-space-sm $knots-space-base;
+    border: 1px solid var(--primary-low);
+    border-radius: $knots-radius-pill;
+    background-color: var(--secondary);
+    color: var(--primary);
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    font-weight: $knots-font-weight-medium;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    transition: $knots-transition-color, $knots-transition-transform;
+
+    .category-color-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: $knots-radius-round;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      border-color: var(--tertiary);
+      color: var(--tertiary);
+      background-color: var(--highlight-low);
+    }
+
+    &--active {
+      background-color: var(--tertiary);
+      border-color: var(--tertiary);
+      color: var(--secondary);
+      font-weight: $knots-font-weight-semibold;
+      box-shadow: $knots-shadow-sm;
+
+      &:hover {
+        background-color: var(--tertiary);
+        filter: brightness(1.1);
+        color: var(--secondary);
+      }
+    }
+  }
+
+  // Scroll indicators
+  &__scroll-left,
+  &__scroll-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: $knots-radius-round;
+    box-shadow: $knots-shadow-sm;
+    cursor: pointer;
+    z-index: $knots-z-base;
+    transition: $knots-transition-transform;
+    color: var(--primary);
+
+    &:hover {
+      box-shadow: $knots-shadow-md;
+    }
+  }
+
+  &__scroll-left {
+    left: $knots-space-xs;
+  }
+
+  &__scroll-right {
+    right: $knots-space-xs;
+  }
+}

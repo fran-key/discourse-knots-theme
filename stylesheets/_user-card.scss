@@ -1,0 +1,268 @@
+// =============================================================================
+// KNOTS Theme - User Card
+// =============================================================================
+// Rounded card with shadow, clean avatar display, and group badge styling.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// User Card (popup)
+// ---------------------------------------------------------------------------
+.user-card {
+  border-radius: $knots-radius-lg;
+  box-shadow: $knots-shadow-xl;
+  border: 1px solid var(--primary-low);
+  overflow: hidden;
+  background-color: var(--secondary);
+
+  // Banner / header area
+  .card-content {
+    padding: 0;
+  }
+
+  // First row (avatar + name)
+  .first-row {
+    display: flex;
+    align-items: center;
+    gap: $knots-space-md;
+    padding: $knots-space-lg $knots-space-xl;
+    border-bottom: 1px solid var(--primary-low);
+
+    .avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: $knots-radius-lg;
+      box-shadow: $knots-shadow-md;
+      flex-shrink: 0;
+    }
+
+    .names {
+      flex-grow: 1;
+      min-width: 0;
+
+      .name-username-wrapper {
+        display: flex;
+        align-items: baseline;
+        gap: $knots-space-sm;
+        flex-wrap: wrap;
+      }
+
+      .full-name,
+      .name {
+        font-family: $knots-font-family-ja;
+        font-size: $knots-font-size-lg;
+        font-weight: $knots-font-weight-bold;
+        color: var(--primary);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+          transition: color $knots-transition-base;
+
+          &:hover {
+            color: var(--tertiary);
+          }
+        }
+      }
+
+      .username {
+        font-size: $knots-font-size-sm;
+        color: var(--primary-medium);
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+
+    // User title / group
+    .user-card-title {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-xs;
+      color: var(--primary-medium);
+      margin-top: $knots-space-2xs;
+    }
+  }
+
+  // Second row (bio, location, etc.)
+  .second-row {
+    padding: $knots-space-base $knots-space-xl;
+
+    .bio {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-sm;
+      line-height: $knots-line-height-ja;
+      color: var(--primary);
+      margin-bottom: $knots-space-md;
+
+      .cooked {
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .location-and-website {
+      display: flex;
+      align-items: center;
+      gap: $knots-space-base;
+      font-size: $knots-font-size-xs;
+      color: var(--primary-medium);
+
+      .d-icon {
+        font-size: $knots-font-size-xs;
+        opacity: 0.6;
+      }
+
+      a {
+        color: var(--tertiary);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  // Stats row
+  .metadata {
+    display: flex;
+    gap: $knots-space-xl;
+    padding: $knots-space-md $knots-space-xl;
+    border-top: 1px solid var(--primary-low);
+    background-color: var(--highlight-low);
+
+    dt {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-xs;
+      color: var(--primary-medium);
+      font-weight: $knots-font-weight-normal;
+    }
+
+    dd {
+      font-size: $knots-font-size-sm;
+      font-weight: $knots-font-weight-semibold;
+      color: var(--primary);
+    }
+  }
+
+  // Action buttons
+  .usercard-controls {
+    display: flex;
+    gap: $knots-space-sm;
+    padding: $knots-space-md $knots-space-xl $knots-space-lg;
+
+    .btn {
+      font-size: $knots-font-size-xs;
+      padding: $knots-space-xs $knots-space-md;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Group Card
+// ---------------------------------------------------------------------------
+.group-card {
+  border-radius: $knots-radius-lg;
+  box-shadow: $knots-shadow-xl;
+  border: 1px solid var(--primary-low);
+  overflow: hidden;
+  background-color: var(--secondary);
+
+  .group-card-header {
+    padding: $knots-space-xl;
+    border-bottom: 1px solid var(--primary-low);
+
+    h1 {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-xl;
+      font-weight: $knots-font-weight-bold;
+    }
+  }
+
+  .group-card-bio {
+    padding: $knots-space-base $knots-space-xl;
+    font-family: $knots-font-family-ja;
+    font-size: $knots-font-size-sm;
+    line-height: $knots-line-height-ja;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Badge Styling (user groups, trust levels)
+// ---------------------------------------------------------------------------
+.badge-card {
+  border-radius: $knots-radius-lg;
+  border: 1px solid var(--primary-low);
+  box-shadow: $knots-shadow-sm;
+  overflow: hidden;
+  background-color: var(--secondary);
+  transition: $knots-transition-transform;
+
+  &:hover {
+    box-shadow: $knots-shadow-md;
+    transform: translateY(-1px);
+  }
+
+  .badge-contents {
+    padding: $knots-space-lg;
+  }
+
+  .badge-icon {
+    margin-right: $knots-space-md;
+  }
+
+  .badge-info {
+    .badge-name {
+      font-family: $knots-font-family-ja;
+      font-weight: $knots-font-weight-bold;
+      font-size: $knots-font-size-base;
+    }
+
+    .badge-description {
+      font-family: $knots-font-family-ja;
+      font-size: $knots-font-size-sm;
+      color: var(--primary-medium);
+      line-height: $knots-line-height-ja;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Persona AI Badge (KNOTS custom)
+// ---------------------------------------------------------------------------
+.knots-persona-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $knots-space-xs;
+  padding: $knots-space-2xs $knots-space-sm;
+  background-color: var(--highlight-low);
+  border: 1px solid var(--primary-low);
+  border-radius: $knots-radius-pill;
+  font-family: $knots-font-family-ja;
+  font-size: $knots-font-size-xs;
+  font-weight: $knots-font-weight-medium;
+  color: var(--primary-medium);
+  white-space: nowrap;
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .d-icon {
+      font-size: 10px;
+      color: var(--tertiary);
+    }
+  }
+
+  &__label {
+    line-height: 1;
+  }
+}

@@ -1,0 +1,38 @@
+ja:
+  theme_metadata:
+    description: "KNOTS - 木材・林業プロフェッショナル向けDiscourseテーマ"
+    settings:
+      knots_show_welcome_banner: "ウェルカムバナーを表示"
+      knots_banner_title: "バナータイトル"
+      knots_banner_subtitle: "バナーサブタイトル"
+      knots_banner_cta_text: "バナーCTAボタンテキスト"
+      knots_banner_cta_url: "バナーCTAボタンURL"
+      knots_category_nav_style: "カテゴリナビゲーションスタイル"
+      knots_enable_persona_badge: "AIペルソナバッジを有効化"
+      knots_show_category_icons: "カテゴリアイコンを表示"
+      knots_topic_list_style: "トピック一覧スタイル"
+      knots_font_size_base: "基本フォントサイズ"
+    descriptions:
+      knots_show_welcome_banner: "ホームページにウェルカムバナーを表示します。ログイン済みユーザーは閉じることができます。"
+      knots_banner_title: "ウェルカムバナーに表示されるタイトルテキストを設定します。"
+      knots_banner_subtitle: "ウェルカムバナーに表示されるサブタイトルテキストを設定します。"
+      knots_banner_cta_text: "ウェルカムバナーのアクションボタンに表示するテキストを設定します。"
+      knots_banner_cta_url: "ウェルカムバナーのアクションボタンのリンク先URLを設定します。"
+      knots_category_nav_style: "カテゴリナビゲーションの表示方法を選択します（水平タブ / ドロップダウン / サイドバー）。"
+      knots_enable_persona_badge: "AI生成コンテンツの投稿にペルソナバッジを表示します。"
+      knots_show_category_icons: "カテゴリ名の横にカスタムアイコンを表示します。"
+      knots_topic_list_style: "トピック一覧の表示スタイルを選択します（クリーンテーブル / カード / コンパクト）。"
+      knots_font_size_base: "本文テキストの基本フォントサイズを選択します。"
+    choices:
+      knots_category_nav_style:
+        horizontal_tabs: "水平タブ"
+        dropdown: "ドロップダウン"
+        sidebar: "サイドバー"
+      knots_topic_list_style:
+        clean_table: "クリーンテーブル"
+        cards: "カード"
+        compact: "コンパクト"
+      knots_font_size_base:
+        14px: "14px（小）"
+        15px: "15px（標準）"
+        16px: "16px（大）"

@@ -1,0 +1,174 @@
+// =============================================================================
+// KNOTS Theme - Header
+// =============================================================================
+// Clean, spacious Asana-style header with dark brown background.
+// =============================================================================
+
+.d-header-wrap {
+  box-shadow: $knots-shadow-sm;
+}
+
+.d-header {
+  height: $knots-header-height;
+  background-color: var(--header_background);
+  border-bottom: none;
+  box-shadow: none;
+
+  .wrap {
+    max-width: none;
+    padding: 0 $knots-space-xl;
+  }
+
+  .contents {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  // Logo area
+  .title {
+    display: flex;
+    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      padding: $knots-space-sm $knots-space-md;
+      border-radius: $knots-radius-md;
+      transition: $knots-transition-base;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    #site-logo,
+    .logo-big {
+      max-height: 32px;
+      transition: opacity $knots-transition-base;
+    }
+
+    .d-icon {
+      color: var(--header_primary);
+      opacity: 0.9;
+    }
+  }
+
+  // Header icons (search, hamburger, user)
+  .d-header-icons {
+    display: flex;
+    align-items: center;
+    gap: $knots-space-xs;
+
+    .d-icon {
+      color: var(--header_primary);
+      opacity: 0.8;
+      transition: opacity $knots-transition-base;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: $knots-radius-md;
+      transition: background-color $knots-transition-base;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+
+        .d-icon {
+          opacity: 1;
+        }
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--tertiary);
+        outline-offset: 2px;
+      }
+
+      &.active {
+        background-color: rgba(255, 255, 255, 0.12);
+
+        .d-icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    // User avatar in header
+    .header-dropdown-toggle {
+      .icon {
+        width: auto;
+        padding: $knots-space-2xs;
+
+        img.avatar {
+          width: 30px;
+          height: 30px;
+          border-radius: $knots-radius-round;
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          transition: border-color $knots-transition-base;
+        }
+
+        &:hover img.avatar {
+          border-color: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  }
+
+  // Search panel
+  .search-menu {
+    border-radius: $knots-radius-lg;
+    box-shadow: $knots-shadow-xl;
+    border: 1px solid var(--primary-low);
+    overflow: hidden;
+    margin-top: $knots-space-sm;
+
+    .search-input {
+      border-bottom: 1px solid var(--primary-low);
+
+      input[type="text"] {
+        font-family: $knots-font-family-ja;
+        font-size: $knots-font-size-base;
+        padding: $knots-space-md $knots-space-base;
+      }
+    }
+
+    .results {
+      max-height: 60vh;
+    }
+  }
+
+  // Notification indicator
+  .ring {
+    background-color: var(--quaternary);
+  }
+}
+
+// Scrolled header (sticky)
+.d-header-wrap .d-header {
+  &.header-scrolled {
+    box-shadow: $knots-shadow-md;
+  }
+}
+
+// Extra info bar (topic title shown when scrolled)
+.extra-info-wrapper {
+  .topic-link {
+    color: var(--header_primary);
+    font-weight: $knots-font-weight-semibold;
+    font-size: $knots-font-size-sm;
+    opacity: 0.95;
+  }
+
+  .badge-wrapper {
+    opacity: 0.8;
+  }
+
+  .topic-statuses .d-icon {
+    color: var(--header_primary);
+    opacity: 0.7;
+  }
+}

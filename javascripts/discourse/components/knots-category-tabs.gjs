@@ -6,6 +6,7 @@ import { on } from "@ember/modifier";
 import { fn } from "@ember/helper";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
+import DiscourseURL from "discourse/lib/url";
 
 /**
  * KnotsCategoryTabs - Standalone horizontal category tab navigation.
@@ -95,15 +96,13 @@ export default class KnotsCategoryTabs extends Component {
   @action
   navigateToCategory(category, event) {
     event.preventDefault();
-    this.router.transitionTo("discovery.category", {
-      category_slug_path_with_id: `${category.slug}/${category.id}`,
-    });
+    DiscourseURL.routeTo(`/c/${category.slug}/${category.id}`);
   }
 
   @action
   navigateToAll(event) {
     event.preventDefault();
-    this.router.transitionTo("discovery.latest");
+    DiscourseURL.routeTo("/latest");
   }
 
   @action

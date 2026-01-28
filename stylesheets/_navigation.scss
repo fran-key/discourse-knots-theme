@@ -74,19 +74,19 @@
     > button.active {
       background-color: var(--tertiary);
       border-color: var(--tertiary);
-      color: var(--secondary);
+      color: #fff;
       font-weight: $knots-font-weight-semibold;
       box-shadow: $knots-shadow-sm;
 
       .d-icon {
         opacity: 1;
-        color: var(--secondary);
+        color: #fff;
       }
 
       &:hover {
         background-color: var(--tertiary);
         filter: brightness(1.1);
-        color: var(--secondary);
+        color: #fff;
       }
     }
   }
@@ -258,17 +258,22 @@
       background-color: var(--highlight-low);
     }
 
-    &--active {
+    &--active,
+    &--active:visited {
       background-color: var(--tertiary);
       border-color: var(--tertiary);
-      color: var(--secondary);
+      color: #fff;
       font-weight: $knots-font-weight-semibold;
       box-shadow: $knots-shadow-sm;
+
+      .category-color-dot {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
 
       &:hover {
         background-color: var(--tertiary);
         filter: brightness(1.1);
-        color: var(--secondary);
+        color: #fff;
       }
     }
   }

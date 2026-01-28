@@ -5,6 +5,7 @@ import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { on } from "@ember/modifier";
 import { fn } from "@ember/helper";
+import DiscourseURL from "discourse/lib/url";
 
 // =============================================================================
 // KNOTS Welcome Banner Component
@@ -14,35 +15,11 @@ class KnotsWelcomeBanner extends Component {
   @service currentUser;
   @service siteSettings;
 
-  @tracked dismissed = false;
-  @tracked leaving = false;
-
-  STORAGE_KEY = "knots-banner-dismissed";
-
-  constructor() {
-    super(...arguments);
-    this.dismissed = this.isDismissed;
-  }
-
-  get isDismissed() {
-    if (typeof localStorage === "undefined") {
-      return false;
-    }
-    try {
-      return localStorage.getItem(this.STORAGE_KEY) === "true";
-    } catch {
-      return false;
-    }
-  }
-
   get shouldShow() {
     const showBanner =
       this.args.outletArgs?.model?.theme_settings?.knots_show_welcome_banner ??
       true;
     if (!showBanner) {
-      return false;
-    }
-    if (this.dismissed) {
       return false;
     }
     const currentPath = this.router.currentRouteName;
@@ -82,35 +59,13 @@ class KnotsWelcomeBanner extends Component {
     );
   }
 
-  @action
-  dismiss() {
-    this.leaving = true;
-    setTimeout(() => {
-      this.dismissed = true;
-      try {
-        localStorage.setItem(this.STORAGE_KEY, "true");
-      } catch {
-        // localStorage not available
-      }
-    }, 300);
-  }
-
   <template>
     {{#if this.shouldShow}}
       <div
-        class="knots-welcome-banner
-          {{if this.leaving 'knots-welcome-banner--leaving' 'knots-welcome-banner--entering'}}"
+        class="knots-welcome-banner knots-welcome-banner--entering"
         role="banner"
         aria-label={{this.bannerTitle}}
       >
-        <button
-          class="knots-welcome-banner__dismiss"
-          {{on "click" this.dismiss}}
-          aria-label="閉じる"
-          type="button"
-        >
-          ✕
-        </button>
         <div class="knots-welcome-banner__content">
           <h2 class="knots-welcome-banner__title">{{this.bannerTitle}}</h2>
           <p class="knots-welcome-banner__subtitle">{{this.bannerSubtitle}}</p>
@@ -163,9 +118,13 @@ class KnotsCategoryNav extends Component {
   @action
   navigateToCategory(category, event) {
     event.preventDefault();
-    this.router.transitionTo("discovery.category", {
-      category_slug_path_with_id: `${category.slug}/${category.id}`,
-    });
+    DiscourseURL.routeTo(`/c/${category.slug}/${category.id}`);
+  }
+
+  @action
+  navigateToAll(event) {
+    event.preventDefault();
+    DiscourseURL.routeTo("/latest");
   }
 
   @action
@@ -200,6 +159,7 @@ class KnotsCategoryNav extends Component {
           class="knots-category-tabs__tab
             {{unless this.currentCategorySlug 'knots-category-tabs__tab--active'}}"
           href="/"
+          {{on "click" this.navigateToAll}}
         >
           すべて
         </a>
@@ -208,7 +168,7 @@ class KnotsCategoryNav extends Component {
           <a
             class="knots-category-tabs__tab
               {{if (this.isActive category) 'knots-category-tabs__tab--active'}}"
-            href={{category.url}}
+            href="/c/{{category.slug}}/{{category.id}}"
             {{on "click" (fn this.navigateToCategory category)}}
           >
             <span

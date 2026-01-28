@@ -95,17 +95,22 @@ class KnotsCategoryNav extends Component {
       .slice(0, 12);
   }
 
-  get currentCategorySlug() {
+  get currentCategoryPath() {
     const route = this.router.currentRoute;
     if (route?.params?.category_slug_path_with_id) {
-      return route.params.category_slug_path_with_id.split("/")[0];
+      return route.params.category_slug_path_with_id;
     }
     return null;
   }
 
   @action
   isActive(category) {
-    return category.slug === this.currentCategorySlug;
+    const path = this.currentCategoryPath;
+    if (!path) {
+      return false;
+    }
+    const slug = category.slug || `${category.id}-category`;
+    return path === `${slug}/${category.id}` || path.startsWith(`${slug}/${category.id}/`);
   }
 
   safeColor(color) {
@@ -115,10 +120,18 @@ class KnotsCategoryNav extends Component {
     return `#${color}`;
   }
 
+  categoryUrl(category) {
+    if (category.url) {
+      return category.url;
+    }
+    const slug = category.slug || `${category.id}-category`;
+    return `/c/${slug}/${category.id}`;
+  }
+
   @action
   navigateToCategory(category, event) {
     event.preventDefault();
-    DiscourseURL.routeTo(`/c/${category.slug}/${category.id}`);
+    DiscourseURL.routeTo(this.categoryUrl(category));
   }
 
   @action
@@ -157,7 +170,7 @@ class KnotsCategoryNav extends Component {
 
         <a
           class="knots-category-tabs__tab
-            {{unless this.currentCategorySlug 'knots-category-tabs__tab--active'}}"
+            {{unless this.currentCategoryPath 'knots-category-tabs__tab--active'}}"
           href="/"
           {{on "click" this.navigateToAll}}
         >
@@ -168,7 +181,7 @@ class KnotsCategoryNav extends Component {
           <a
             class="knots-category-tabs__tab
               {{if (this.isActive category) 'knots-category-tabs__tab--active'}}"
-            href="/c/{{category.slug}}/{{category.id}}"
+            href={{this.categoryUrl category}}
             {{on "click" (fn this.navigateToCategory category)}}
           >
             <span

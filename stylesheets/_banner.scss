@@ -103,7 +103,7 @@
     align-items: center;
     gap: $knots-space-sm;
     background-color: $knots-wood-accent;
-    color: #fff;
+    color: #fff !important;
     font-family: $knots-font-family-ja;
     font-size: $knots-font-size-base;
     font-weight: $knots-font-weight-bold;
@@ -119,16 +119,22 @@
       font-size: $knots-font-size-sm;
     }
 
+    &:link,
+    &:visited {
+      color: #fff !important;
+    }
+
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(139, 105, 20, 0.5);
-      color: #fff;
+      color: #fff !important;
       filter: brightness(1.1);
     }
 
     &:active {
       transform: translateY(0);
       box-shadow: 0 2px 8px rgba(139, 105, 20, 0.3);
+      color: #fff !important;
     }
   }
 

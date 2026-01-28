@@ -25,7 +25,7 @@
     height: 100%;
   }
 
-  // Logo area
+  // Logo area - custom KNOTS branding
   .title {
     display: flex;
     align-items: center;
@@ -36,9 +36,19 @@
       padding: $knots-space-sm $knots-space-md;
       border-radius: $knots-radius-md;
       transition: $knots-transition-base;
+      text-decoration: none;
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.08);
+      }
+
+      // Hide default Discourse logo image when no custom logo is set
+      #site-text-logo {
+        font-family: $knots-font-family-ja;
+        font-size: 18px;
+        font-weight: $knots-font-weight-bold;
+        color: var(--header_primary);
+        letter-spacing: -0.3px;
       }
     }
 
@@ -54,26 +64,32 @@
     }
   }
 
-  // Header icons (search, hamburger, user)
+  // Header icons (search, hamburger, user) - enlarged for better tap targets
   .d-header-icons {
     display: flex;
     align-items: center;
-    gap: $knots-space-xs;
+    gap: $knots-space-sm;
 
     .d-icon {
       color: var(--header_primary);
       opacity: 0.8;
       transition: opacity $knots-transition-base;
+      font-size: 1.15em;
     }
 
     .icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
+      width: 42px;
+      height: 42px;
       border-radius: $knots-radius-md;
       transition: background-color $knots-transition-base;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
@@ -101,11 +117,11 @@
     .header-dropdown-toggle {
       .icon {
         width: auto;
-        padding: $knots-space-2xs;
+        padding: $knots-space-xs;
 
         img.avatar {
-          width: 30px;
-          height: 30px;
+          width: 32px;
+          height: 32px;
           border-radius: $knots-radius-round;
           border: 2px solid rgba(255, 255, 255, 0.2);
           transition: border-color $knots-transition-base;

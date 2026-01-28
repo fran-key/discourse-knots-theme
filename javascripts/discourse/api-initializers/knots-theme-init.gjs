@@ -261,8 +261,14 @@ export default apiInitializer("1.0.0", (api) => {
   // Register persona badge in post meta data
   api.renderInOutlet("post-meta-data", PersonaAiBadge);
 
-  // Add body class for theme detection
+  // Add body class for theme detection + override logo home link
   api.onPageChange(() => {
     document.body.classList.add("knots-theme");
+
+    // Override logo link to point to landing page (/)
+    const logoLink = document.querySelector(".d-header .title a");
+    if (logoLink && logoLink.getAttribute("href") !== "/") {
+      logoLink.setAttribute("href", "/");
+    }
   });
 });

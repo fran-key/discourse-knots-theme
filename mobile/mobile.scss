@@ -38,14 +38,30 @@ body {
   }
 
   .d-header-icons {
-    .icon {
-      width: 34px;
-      height: 34px;
+    gap: $knots-space-xs;
+
+    .d-icon {
+      font-size: 1.1em;
     }
 
-    .header-dropdown-toggle .icon img.avatar {
-      width: 26px;
-      height: 26px;
+    .icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .header-dropdown-toggle .icon {
+      padding: $knots-space-2xs;
+
+      img.avatar {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
@@ -405,6 +421,50 @@ nav.post-controls .actions {
 }
 
 // ---------------------------------------------------------------------------
+// Hamburger / Sidebar Panel - Mobile overlay fix
+// ---------------------------------------------------------------------------
+.sidebar-hamburger-dropdown {
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $knots-z-overlay;
+  border-radius: 0;
+  background: var(--secondary);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: $knots-shadow-xl;
+  border: none;
+
+  .sidebar-sections {
+    padding-bottom: $knots-space-2xl;
+  }
+}
+
+// Sidebar footer items (users, FAQ, groups, badges) - overlay panel
+.sidebar-footer-wrapper {
+  position: sticky;
+  bottom: 0;
+  background: var(--secondary);
+  border-top: 1px solid var(--primary-low);
+  padding: $knots-space-sm $knots-space-base;
+  z-index: $knots-z-base;
+
+  .sidebar-footer-actions {
+    flex-wrap: wrap;
+    gap: $knots-space-xs;
+
+    .btn {
+      font-size: $knots-font-size-xs;
+      padding: $knots-space-sm $knots-space-md;
+      border-radius: $knots-radius-md;
+      flex: 0 0 auto;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Tags - Mobile smaller
 // ---------------------------------------------------------------------------
 .discourse-tag {
@@ -417,27 +477,41 @@ nav.post-controls .actions {
 }
 
 // ---------------------------------------------------------------------------
-// Banner - Mobile compact
+// Banner - Mobile compact (fixed overflow)
 // ---------------------------------------------------------------------------
 .knots-welcome-banner {
   margin: $knots-space-sm;
   padding: $knots-space-lg $knots-space-base;
   border-radius: $knots-radius-md;
+  overflow: hidden;
+
+  &__content {
+    max-width: 100%;
+    overflow: hidden;
+  }
 
   &__title {
     font-size: $knots-font-size-lg;
+    word-break: break-word;
   }
 
   &__subtitle {
     font-size: $knots-font-size-xs;
     margin-bottom: $knots-space-md;
+    word-break: break-word;
   }
 
   &__cta {
     width: 100%;
+    max-width: 100%;
     justify-content: center;
     font-size: $knots-font-size-sm;
     padding: $knots-space-sm $knots-space-base;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__dismiss {

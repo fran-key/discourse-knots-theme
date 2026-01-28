@@ -273,10 +273,16 @@ export default apiInitializer("1.0.0", (api) => {
   api.onPageChange(() => {
     document.body.classList.add("knots-theme");
 
-    // Override logo link to point to landing page (/)
+    // Force logo click to do a full page navigation to landing page
     const logoLink = document.querySelector(".d-header .title a");
-    if (logoLink && logoLink.getAttribute("href") !== "/") {
+    if (logoLink && !logoLink.dataset.knotsOverride) {
       logoLink.setAttribute("href", "/");
+      logoLink.dataset.knotsOverride = "true";
+      logoLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = "/";
+      });
     }
   });
 });

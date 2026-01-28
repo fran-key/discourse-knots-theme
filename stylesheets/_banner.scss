@@ -211,24 +211,36 @@
 // ---------------------------------------------------------------------------
 @media screen and (max-width: $knots-breakpoint-mobile) {
   .knots-welcome-banner {
-    padding: $knots-space-xl $knots-space-lg;
+    padding: $knots-space-xl $knots-space-base;
     border-radius: $knots-radius-md;
     margin: $knots-space-sm;
+    overflow: hidden;
+
+    &__content {
+      max-width: 100%;
+      width: 100%;
+    }
 
     &__title {
       font-size: $knots-font-size-xl;
+      word-break: break-word;
     }
 
     &__subtitle {
       font-size: $knots-font-size-sm;
       margin-bottom: $knots-space-base;
+      word-break: break-word;
     }
 
     &__cta {
+      display: flex;
       font-size: $knots-font-size-sm;
       padding: $knots-space-sm $knots-space-base;
       width: 100%;
+      max-width: 100%;
       justify-content: center;
+      box-sizing: border-box;
+      text-align: center;
     }
   }
 }

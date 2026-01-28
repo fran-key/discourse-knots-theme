@@ -90,7 +90,13 @@ class KnotsCategoryNav extends Component {
   get categories() {
     const siteCategories = this.site.categories ?? [];
     return siteCategories
-      .filter((cat) => !cat.parent_category_id)
+      .filter(
+        (cat) =>
+          !cat.parent_category_id &&
+          !cat.isUncategorized &&
+          cat.slug !== "uncategorized" &&
+          cat.id !== 1
+      )
       .sort((a, b) => (a.position ?? 0) - (b.position ?? 0))
       .slice(0, 12);
   }
@@ -158,7 +164,7 @@ class KnotsCategoryNav extends Component {
 
   <template>
     {{#if this.categories.length}}
-      <nav class="knots-category-tabs" aria-label="カテゴリナビゲーション">
+      <div class="knots-category-tabs-wrapper">
         <button
           class="knots-category-tabs__scroll-left"
           {{on "click" this.scrollLeft}}
@@ -168,29 +174,31 @@ class KnotsCategoryNav extends Component {
           ‹
         </button>
 
-        <a
-          class="knots-category-tabs__tab
-            {{unless this.currentCategoryPath 'knots-category-tabs__tab--active'}}"
-          href="/"
-          {{on "click" this.navigateToAll}}
-        >
-          すべて
-        </a>
-
-        {{#each this.categories as |category|}}
+        <nav class="knots-category-tabs" aria-label="カテゴリナビゲーション">
           <a
             class="knots-category-tabs__tab
-              {{if (this.isActive category) 'knots-category-tabs__tab--active'}}"
-            href={{this.categoryUrl category}}
-            {{on "click" (fn this.navigateToCategory category)}}
+              {{unless this.currentCategoryPath 'knots-category-tabs__tab--active'}}"
+            href="/"
+            {{on "click" this.navigateToAll}}
           >
-            <span
-              class="category-color-dot"
-              style="background-color: {{this.safeColor category.color}}"
-            ></span>
-            {{category.name}}
+            すべて
           </a>
-        {{/each}}
+
+          {{#each this.categories as |category|}}
+            <a
+              class="knots-category-tabs__tab
+                {{if (this.isActive category) 'knots-category-tabs__tab--active'}}"
+              href={{this.categoryUrl category}}
+              {{on "click" (fn this.navigateToCategory category)}}
+            >
+              <span
+                class="category-color-dot"
+                style="background-color: {{this.safeColor category.color}}"
+              ></span>
+              {{category.name}}
+            </a>
+          {{/each}}
+        </nav>
 
         <button
           class="knots-category-tabs__scroll-right"
@@ -200,7 +208,7 @@ class KnotsCategoryNav extends Component {
         >
           ›
         </button>
-      </nav>
+      </div>
     {{/if}}
   </template>
 }

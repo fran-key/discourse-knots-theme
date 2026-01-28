@@ -212,17 +212,26 @@
 // ---------------------------------------------------------------------------
 // KNOTS Custom Category Tabs (rendered by JS component)
 // ---------------------------------------------------------------------------
+
+// Wrapper: flex row with arrows on sides, scrollable nav in center
+.knots-category-tabs-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary);
+  border-bottom: 1px solid var(--primary-low);
+}
+
+// Scrollable nav area
 .knots-category-tabs {
   display: flex;
   align-items: center;
   gap: $knots-space-sm;
-  padding: $knots-space-md $knots-space-xl;
-  background-color: var(--secondary);
-  border-bottom: 1px solid var(--primary-low);
+  padding: $knots-space-md $knots-space-sm;
+  flex: 1;
+  min-width: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  position: relative;
 
   &::-webkit-scrollbar {
     display: none;
@@ -278,12 +287,10 @@
     }
   }
 
-  // Scroll indicators
+  // Scroll arrows (now flex siblings of nav, not absolute positioned inside it)
   &__scroll-left,
   &__scroll-right {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    flex-shrink: 0;
     width: 32px;
     height: 32px;
     display: flex;
@@ -297,17 +304,10 @@
     z-index: $knots-z-base;
     transition: $knots-transition-transform;
     color: var(--primary);
+    margin: 0 $knots-space-xs;
 
     &:hover {
       box-shadow: $knots-shadow-md;
     }
-  }
-
-  &__scroll-left {
-    left: $knots-space-xs;
-  }
-
-  &__scroll-right {
-    right: $knots-space-xs;
   }
 }

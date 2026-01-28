@@ -477,43 +477,11 @@ nav.post-controls .actions {
 }
 
 // ---------------------------------------------------------------------------
-// Banner - Mobile compact (fixed overflow)
+// Banner - Mobile compact
 // ---------------------------------------------------------------------------
+// Main mobile banner styles are in _banner.scss @media responsive block.
+// Only Discourse mobile-view-specific overrides go here.
 .knots-welcome-banner {
-  margin: $knots-space-sm;
-  padding: $knots-space-lg $knots-space-base;
-  border-radius: $knots-radius-md;
-  overflow: hidden;
-
-  &__content {
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  &__title {
-    font-size: $knots-font-size-lg;
-    word-break: break-word;
-  }
-
-  &__subtitle {
-    font-size: $knots-font-size-xs;
-    margin-bottom: $knots-space-md;
-    word-break: break-word;
-  }
-
-  &__cta {
-    width: 100%;
-    max-width: 100%;
-    justify-content: center;
-    font-size: $knots-font-size-sm;
-    padding: $knots-space-sm $knots-space-base;
-    box-sizing: border-box;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   &__dismiss {
     width: 28px;
     height: 28px;
